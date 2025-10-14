@@ -1,0 +1,9 @@
+.header {
+  position: relative;
+  background: var(--primary-color-gradient);
+  border: none;
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    height: rem(50px);
+  }
+}

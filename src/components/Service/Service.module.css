@@ -1,0 +1,72 @@
+.serviceCardCol {
+  @media (max-width: $mantine-breakpoint-xs) {
+    background: linear-gradient(180deg, #fff 0%, #f666ae 100%);
+  }
+  &:last-child {
+    .serviceCard {
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+.serviceCard {
+  position: relative;
+
+  @media (min-width: $mantine-breakpoint-lg) {
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0.5px;
+      height: 70%;
+      background-color: var(--mantine-color-main-0);
+      z-index: 1;
+    }
+  }
+}
+
+.slide {
+  border: 1px solid #f666ae;
+  height: rem(350px);
+  width: rem(324px);
+  border-radius: 20px;
+  padding: 0 10px;
+  gap: 50px;
+  display: flex;
+}
+
+.controls {
+  width: 113%;
+  left: -7%;
+}
+
+.control {
+  background-color: #ffffff;
+  box-shadow: none;
+  color: #f666ae;
+}
+
+.serviceGridInner {
+  justify-content: space-evenly;
+
+  @media (min-width: $mantine-breakpoint-md) {
+    column-gap: 0px;
+    row-gap: 40px;
+  }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    column-gap: 20px;
+    row-gap: 40px;
+  }
+}
+
+.root {
+  &[data-inactive] {
+    opacity: 0;
+    cursor: default;
+  }
+}

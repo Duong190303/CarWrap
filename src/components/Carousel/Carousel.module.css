@@ -1,0 +1,15 @@
+.indicators {
+  bottom: -4%;
+
+  @media (max-width: $mantine-breakpoint-xs) {
+  bottom: 3%;
+  }
+}
+
+.indicator {
+  background: #e2e2e2;
+
+  &[data-active="true"] {
+    background: var(--mantine-color-main-0);
+  }
+}

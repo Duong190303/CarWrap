@@ -1,0 +1,59 @@
+@import "@mantine/core/styles.css";
+@import "@mantine/carousel/styles.css";
+@import "@mantine/notifications/styles.css";
+
+:root {
+	--global--size: clamp(2rem, 4vw, 5rem);
+	--anim--hover-time: 400ms;
+	--anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
+	--linear-ease: linear(
+		0,
+		0.068,
+		0.19 2.7%,
+		0.804 8.1%,
+		1.037,
+		1.199 13.2%,
+		1.245,
+		1.27 15.8%,
+		1.274,
+		1.272 17.4%,
+		1.249 19.1%,
+		0.996 28%,
+		0.949,
+		0.928 33.3%,
+		0.926,
+		0.933 36.8%,
+		1.001 45.6%,
+		1.013,
+		1.019 50.8%,
+		1.018 54.4%,
+		1 63.1%,
+		0.995 68%,
+		1.001 85%,
+		1,
+		--primary: #9d00ff; --secondary: #00e5ff; --accent: #ff00e5;
+			--background: #050510; --card-bg: rgba(20, 20, 40, 0.7) ;
+			--text-primary: #ffffff; --text-secondary: #b8b8ff; --glow-primary:
+			0 0 10px rgba(157, 0, 255, 0.7),
+		0 0 20px rgba(157, 0, 255, 0.5) ; --glow-secondary: 0 0 10px
+			rgba(0, 229, 255, 0.7),
+		0 0 20px rgba(0, 229, 255, 0.5) ; --glow-accent: 0 0 10px
+			rgba(255, 0, 229, 0.7),
+		0 0 20px rgba(255, 0, 229, 0.5) ; --transition-speed: 0.5s;
+	);
+
+	@mixin light-root {
+		--text-color: #444444;
+	}
+
+	@mixin dark-root {
+		--text-color: #fff;
+	}
+
+	--text-white: #fff;
+	--primary-color-gradient: linear-gradient(90deg, #f666ae 0%, #f43c98 100%);
+}
+
+::-webkit-scrollbar {
+	display: none;
+}

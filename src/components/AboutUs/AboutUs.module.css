@@ -1,0 +1,43 @@
+.controls {
+  @media (max-width: $mantine-breakpoint-xs) {
+    width: 110%;
+    left: -20px;
+  }
+
+  @media (min-width: $mantine-breakpoint-sm) {
+    width: 116%;
+    left: -50px;
+  }
+
+  @media (min-width: $mantine-breakpoint-md) {
+    width: 112%;
+  }
+
+  @media (min-width: $mantine-breakpoint-xl) {
+    width: 110%;
+    left: -65px;
+  }
+
+  @media (min-width: $mantine-breakpoint-xxl) {
+    width: 105%;
+    left: -55px;
+  }
+}
+
+.control {
+  background-color: #ffffff;
+  box-shadow: none;
+  color: #f666ae;
+}
+
+.viewport {
+  @media (max-width: $mantine-breakpoint-xs) {
+    padding: 0 30px;
+  }
+}
+
+.slide {
+  @media (min-width: $mantine-breakpoint-sm) {
+    padding-inline-end: 0 !important;
+  }
+}
