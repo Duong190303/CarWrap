@@ -150,7 +150,7 @@ export const ContactForm: React.FC = () => {
                 styles={{
                   root: {
                     background:
-                      "linear-gradient(135deg, #F666AE 0%, #F78AC5 100%) ",
+                      "linear-gradient(135deg, #246FB4 0%, #F78AC5 100%) ",
                     boxShadow: "0 10px 24px rgba(246, 102, 174, 0.25)",
                   },
                 }}

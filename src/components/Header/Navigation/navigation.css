@@ -62,7 +62,7 @@
     padding: 0;
 
     :hover {
-      background-color: #f666ae;
+      background-color: var(--mantine-color-dark-8);
       border-radius: 10px;
       color: white;
     }
@@ -103,7 +103,7 @@
 
   @media (max-width: $mantine-breakpoint-sm) {
     width: 100%;
-    color: #f666ae;
+    color: var(--mantine-color-dark-8);
   }
 }
 

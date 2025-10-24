@@ -20,9 +20,8 @@ export const Carousel: React.FC = () => {
         bottom={"50%"}
         left={"5%"}
         style={{ zIndex: 10 }}
-       
       >
-        <Text fz={48} c={"#F666AE"} fw={700}>
+        <Text fz={48} c={"#246FB4"} fw={700}>
           BEAUTY
         </Text>
         <Text w={260} fz={40} c={"#FFFFFF"} fw={700}>
@@ -42,27 +41,36 @@ export const Carousel: React.FC = () => {
       >
         <MantineCarousel.Slide>
           <BackgroundImage
-            src="/assets/carousel/bg_1.png"
+            src="/assets/carousel/img1.jpg"
             w="100%"
-            h={{ base: 660, xl: 500, xxl: 640 }}
+            h={{ base: 660, xl: 630, xxl: 640 }}
             bgsz="cover"
             bgp="center"
           />
         </MantineCarousel.Slide>
         <MantineCarousel.Slide>
           <BackgroundImage
-            src="/assets/carousel/bg_1.png"
+            src="/assets/carousel/img2.jpg"
             w="100%"
-            h={{ base: 660, xl: 500, xxl: 640 }}
+            h={{ base: 660, xl: 630, xxl: 640 }}
             bgsz="cover"
             bgp="center"
           />
         </MantineCarousel.Slide>
         <MantineCarousel.Slide>
           <BackgroundImage
-            src="/assets/carousel/bg_1.png"
+            src="/assets/carousel/img3.jpg"
             w="100%"
-            h={{ base: 660, xl: 500, xxl: 640 }}
+            h={{ base: 660, xl: 630, xxl: 640 }}
+            bgsz="cover"
+            bgp="center"
+          />
+        </MantineCarousel.Slide>
+        <MantineCarousel.Slide>
+          <BackgroundImage
+            src="/assets/carousel/img4.jpg"
+            w="100%"
+            h={{ base: 660, xl: 630, xxl: 640 }}
             bgsz="cover"
             bgp="center"
           />

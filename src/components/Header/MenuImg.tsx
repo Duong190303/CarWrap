@@ -8,12 +8,12 @@ export const MenuImg: React.FC = () => {
 
   return (
     <>
-      <Modal.Root opened={opened} onClose={close} c={"#f666ae"}>
+      <Modal.Root opened={opened} onClose={close} c={"#246FB4"}>
         <Modal.Overlay />
         <Modal.Content>
           <Modal.Header>
             <Modal.Title fw={700}>MENU</Modal.Title>
-            <CloseButton onClick={close} c={"#f666ae"} />
+            <CloseButton onClick={close} c={"#246FB4"} />
           </Modal.Header>
           <Modal.Body>
             <Image src="/Menu.svg" w={"100%"} h={"100%"} fit="contain" />
@@ -36,8 +36,8 @@ export const MenuImg: React.FC = () => {
         }}
         tt={{ base: "uppercase", sm: "uppercase", md: "none" }}
         c={{
-          base: "#f666ae",
-          sm: "#f666ae",
+          base: "#246FB4",
+          sm: "#246FB4",
           md: "var(--mantine-color-dark-6)",
         }}
       >

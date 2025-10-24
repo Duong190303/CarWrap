@@ -60,7 +60,7 @@ export const DrawerNav: React.FC<NavProps> = ({
         <Drawer.Overlay />
         <Drawer.Content>
           <Drawer.Header
-            style={{ borderBottom: "1px solid #f666ae", padding: 10 }}
+            style={{ borderBottom: "1px solid #246FB4", padding: 10 }}
           >
             <UnstyledButton component={Link} href="#">
               <Image
@@ -74,7 +74,7 @@ export const DrawerNav: React.FC<NavProps> = ({
                 }}
               />
             </UnstyledButton>
-            <Drawer.CloseButton c={"#f666ae"} size={40} />
+            <Drawer.CloseButton c={"#246FB4"} size={40} />
           </Drawer.Header>
 
           <Drawer.Body
@@ -132,7 +132,7 @@ export const DrawerNav: React.FC<NavProps> = ({
         </Drawer.Content>
       </Drawer.Root>
       <ThemeIcon variant="transparent" onClick={open}>
-        <IconMenu2 stroke={2} color="#f666ae" />
+        <IconMenu2 stroke={2} color="#246FB4" />
       </ThemeIcon>
     </Box>
   );

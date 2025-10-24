@@ -1,6 +1,7 @@
 .header {
   position: relative;
-  background: var(--primary-color-gradient);
+  /* background: var(--mantine-color-dark-8); */
+  background-color: #f4f6f7;
   border: none;
 
   @media (max-width: $mantine-breakpoint-xs) {

@@ -14,7 +14,7 @@ import "mantine-datatable/styles.layer.css"
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Daisy Nail",
+    title: "Car Wrap",
     description: "Daisy Nail Art",
   }
 }

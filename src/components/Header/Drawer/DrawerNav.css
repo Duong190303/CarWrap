@@ -1,12 +1,12 @@
 .Anchor-root,
 .Text-root,
 .MenuImg {
-  color: #f666ae;
+  color: #246FB4;
   padding: 5px 10px;
   transition: all 0.2 ease;
 
   :hover {
-    background-color: #f666ae;
+    background-color: #246FB4;
     color: white;
     border-radius: 5px;
     transition: all 0.2 ease;
@@ -14,7 +14,7 @@
 }
 
 .Anchor-root[data-active="true"] .Text-root {
-  color: #f666ae;
+  color: #246FB4;
 }
 
 .socialLink {
@@ -24,7 +24,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 100%;
-  background:#f666ae ;
+  background:#246FB4 ;
 }
 
 .socialLink:hover {

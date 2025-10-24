@@ -1,0 +1,56 @@
+.thumb {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.thumb img {
+  transition: transform 300ms ease;
+}
+
+.thumb:hover img {
+  transform: scale(1.05);
+}
+
+/* lớp phủ đen mờ */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 20%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  opacity: 0;
+  transition: opacity 200ms ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.thumb:hover .overlay {
+  opacity: 1;
+}
+
+/* khối text phía dưới */
+.caption {
+  width: 100%;
+  padding: 14px 16px;
+  color: white;
+}
+
+.title {
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: aliceblue;
+}
+
+.service {
+  opacity: 0.9;
+  font-size: 12px;
+  margin-top: 2px;
+  color: #d3d3d3;
+}

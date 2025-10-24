@@ -4,49 +4,35 @@ import {
   Flex,
   Group,
   Image,
-  Paper,
   Text,
   UnstyledButton,
-  useMatches,
+  useMantineTheme,
+  Divider,
+  Paper,
 } from "@mantine/core";
 import {
-  IconBrandFacebookFilled,
-  IconBrandGmail,
-  IconBrandInstagramFilled,
-  IconBrandTiktokFilled,
-  IconPhoneCall,
+  IconMapPin,
   IconPhoneRinging,
+  IconClock,
+  IconHeadphones,
 } from "@tabler/icons-react";
 import classes from "./Header.module.css";
 import Link from "next/link";
 import { ButtonDaisy } from "../ButtonDaisy";
 import clsx from "clsx";
-import GooeyNav from "./Navigation/Navigation";
 import { motion } from "framer-motion";
-import { GradientText } from "../UI/GradientText/GradientText";
 import { DrawerNav } from "./Drawer/DrawerNav";
-import { MenuImg } from "./MenuImg";
+import { usePathname } from "next/navigation";
+import { NavItem } from "./Navbar/NavbarItem";
+import React from "react";
 
-const socialLinks = [
-  {
-    icon: IconBrandFacebookFilled,
-    href: "/#",
-  },
-  {
-    icon: IconBrandInstagramFilled,
-    href: "/#",
-  },
-  {
-    icon: IconBrandTiktokFilled,
-    href: "/#",
-  },
-];
-export type NavigationType = {
-  id: number;
+type NavigationType = {
+  id: string | number;
   label: string;
   href: string;
   active?: boolean;
   subNavigation?: NavigationType[];
+  children?: NavigationType[];
 };
 
 export const DEFAULT_NAVIGATION_ITEMS: NavigationType[] = [
@@ -57,21 +43,36 @@ export const DEFAULT_NAVIGATION_ITEMS: NavigationType[] = [
   },
   {
     id: 2,
-    label: "Services",
-    href: "/#services",
+    label: "News",
+    href: "/#newtoday",
   },
   {
     id: 3,
-    label: "Gallery",
-    href: "/#gallery",
+    label: "Services",
+    href: "/#",
+    children: [
+      { id: "3a", label: "Car Wrapping", href: "/#service" },
+      {
+        id: "3b",
+        label: "Paint Protection",
+        href: "/#service",
+      },
+      { id: "3c", label: "Detailing", href: "/#service" },
+      { id: "3d", label: "Bodykit Installing", href: "/#service" },
+    ],
   },
   {
     id: 4,
+    label: "Suppliers",
+    href: "/#suppliers",
+  },
+  {
+    id: 5,
     label: "Contact Us",
     href: "/#contact_us",
   },
   {
-    id: 5,
+    id: 6,
     label: "About Us",
     href: "/#about_us",
   },
@@ -82,86 +83,100 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
     hidden: { y: -80, x: "-50%", opacity: 0 },
     visible: { y: 5, x: "-50%", opacity: 1 },
   };
-  const sizeIconSocial = useMatches({
-    base: 16,
-    md: 20,
-  });
+  const theme = useMantineTheme();
+  const pathname = usePathname();
+
+  // Hash hiện tại
+  const [currentHash, setCurrentHash] = React.useState<string>("");
+  React.useEffect(() => {
+    const update = () => setCurrentHash(window.location.hash || "");
+    update();
+    window.addEventListener("hashchange", update);
+    return () => window.removeEventListener("hashchange", update);
+  }, []);
+
+  // Lấy href “đang active” từ URL (nếu có hash -> "/#xxx", nếu không -> pathname)
+  const activeHref = React.useMemo(() => {
+    if (currentHash) return `/${currentHash}`; // ví dụ "#contact_us" -> "/#contact_us"
+    return pathname || "/"; // ví dụ "/about"
+  }, [pathname, currentHash]);
 
   return (
     <>
-      <Container size="xl" mx="auto" visibleFrom="sm">
-        <Flex align="center" justify="space-between" w="100%" h={60}>
-          <Flex align="center" gap={30}>
-            <Group gap={10}>
-              <IconBrandGmail size={20} stroke={1.5} color="#fff" />
-              <Text fz={{ base: 14, md: 16 }} c="#fff" fw="bold">
-                info@nailartstudio.com
-              </Text>
-            </Group>
-            <Group gap={10}>
-              <IconPhoneCall size={20} stroke={1.5} color="#fff" />
-              <GradientText
-                colors={["#ff0066", "#ffff00", "#00ff66", "#ff0066", "#ffff00"]}
-                animationSpeed={3}
-                showBorder={false}
-                className="custom-class"
-              >
-                (209) 555-0104
-              </GradientText>
-            </Group>
-          </Flex>
-          <Flex align="center" gap={20} justify="flex-end">
-            {socialLinks.map((link, index) => (
-              <Paper
-                key={index}
-                classNames={{ root: classes.socialLink }}
-                w={{ base: 30, md: 35 }}
-                h={{ base: 30, md: 35 }}
-              >
-                <link.icon size={sizeIconSocial} color="#fff" />
-              </Paper>
-            ))}
-          </Flex>
+      <Container size="xl" mx="auto" visibleFrom="sm" bg={"#F4F6F7"}>
+        <Flex gap={10} align="center" justify="space-between" w="100%" h={60}>
+          <Group gap="xs" wrap="nowrap">
+            <IconMapPin size={18} color={theme.colors.cyan[6]} />
+            <Text fz="sm" fw={500} c="#1f1f1f">
+              38A Nguyễn Quý Đức, P. An Phú, TP. Thủ Đức, TP. HCM
+            </Text>
+          </Group>
+
+          <Divider
+            orientation="vertical"
+            styles={{ root: { borderInlineStart: "1px solid #666" } }}
+          />
+
+          <Group gap="xs" wrap="nowrap">
+            <IconClock size={18} color={theme.colors.cyan[6]} />
+            <Text fz="sm" fw={500} c="#1f1f1f">
+              Thứ 2 - 7 / 08:30 AM - 06:00 PM
+            </Text>
+          </Group>
+
+          <Divider
+            orientation="vertical"
+            styles={{ root: { borderInlineStart: "1px solid #666" } }}
+          />
+
+          <Group gap="xs" wrap="nowrap">
+            <IconHeadphones size={18} color={theme.colors.cyan[6]} />
+            <Text fz="sm" fw={500} c="#1f1f1f">
+              Tư vấn: (+84) 933 622 225
+            </Text>
+          </Group>
+
+          <Divider
+            orientation="vertical"
+            styles={{ root: { borderInlineStart: "1px solid #666" } }}
+          />
+
+          <ButtonDaisy
+            type="primary"
+            size="sm"
+            radius={5}
+            w={100}
+            iconLeft={<Image src="/booking_icon.png" alt="booking" w={20} />}
+            iconRight={<IconPhoneRinging size={20} />}
+            fz={14}
+          >
+            Booking
+          </ButtonDaisy>
         </Flex>
       </Container>
 
       <motion.div
-        className={clsx(classes.headerBottom, {
-          [classes.pinned]: pinned,
-        })}
+        className={clsx(classes.headerBottom, { [classes.pinned]: pinned })}
         initial="hidden"
         animate="visible"
         exit="hidden"
         variants={headerVariants}
-        transition={{
-          duration: 0.6,
-          ease: "easeInOut",
-        }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
       >
         <Group
-          //   visibleFrom="sm"
           classNames={{ root: classes.headerBottomContent }}
           w="100%"
-          h={{
-            base: 60,
-            md: 80,
-          }}
-          px={{
-            base: 5,
-            sm: 20,
-          }}
+          h={{ base: 60, md: 80 }}
+          px={{ base: 5, sm: 20 }}
         >
           <Group flex={1} h="100%">
             <UnstyledButton component={Link} href="#">
               <Image
-                src="/logo.png"
+                src="/LogoCW.png"
                 alt="logo"
                 fit="contain"
                 h="100%"
-                w={{
-                  base: 150,
-                  md: 200,
-                }}
+                w={{ base: 80, md: 85 }}
               />
             </UnstyledButton>
           </Group>
@@ -180,30 +195,23 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
             </ButtonDaisy>
           </Box>
 
-          <Group pos="relative" h="100%" gap={2} visibleFrom="md">
-            <GooeyNav
-              items={DEFAULT_NAVIGATION_ITEMS}
-              particleCount={15}
-              particleDistances={[90, 10]}
-              particleR={100}
-              initialActiveIndex={0}
-              animationTime={600}
-              timeVariance={300}
-              colors={[1, 2, 3, 1, 2, 3, 1, 4]}
-            />
-            <MenuImg />
-            <ButtonDaisy
-              type="primary"
-              size="md"
-              radius="sm"
-              w={150}
-              h={45}
-              iconLeft={<Image src="/booking_icon.png" alt="booking" w={20} />}
-              iconRight={<IconPhoneRinging size={20} />}
-            >
-              Booking
-            </ButtonDaisy>
-          </Group>
+          <Paper
+            component="nav"
+            radius={0}
+            withBorder={false}
+            px="lg"
+            py="sm"
+            variant="transparent"
+            bg="transparent"
+            fz={16}
+          >
+            <Group justify="center" gap={36}>
+              {DEFAULT_NAVIGATION_ITEMS.map((it) => (
+                <NavItem key={it.id} item={it} activeHref={activeHref} />
+              ))}
+            </Group>
+          </Paper>
+
           <DrawerNav />
         </Group>
       </motion.div>

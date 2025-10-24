@@ -4,6 +4,7 @@
   left: 50%;
   margin: 0 auto;
   background-color: white;
+  /* background-color: #F4F6F7; */
   transition: all 0.15s ease-in-out;
 
   @media (max-width: $mantine-breakpoint-xs) {

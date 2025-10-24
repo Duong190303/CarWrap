@@ -1,71 +1,76 @@
 .btn {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: rem(160px);
-	height: height(45px);
-	border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: rem(160px);
+  height: height(45px);
+  /* border-radius: 10px; */
 
-	text-align: center;
-	font-size: 16px;
-	font-weight: bold;
-	color: white;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
 
-	text-decoration: none;
-	transition: all 0.35s;
-	box-sizing: border-box;
+  text-decoration: none;
+  transition: all 0.35s;
+  box-sizing: border-box;
 }
 
 .buttonFiled {
-	position: relative;
-	border-color: var(--mantine-color-main-0);
-	background-color: var(--mantine-color-main-0);
-	color: var(--mantine-color-white);
-	overflow: hidden;
-	span[data-name="hover"] {
-		display: inline-block;
-		transition: all 0.25s;
-		transform: translate(0, 0);
-	}
-	span[data-name="me"] {
-		margin-left: 0.25em;
-		transition: all 0.25s;
-		opacity: 1;
-	}
-	.block {
-		width: 30%;
-		height: 100%;
-		position: absolute;
-		top: 50%;
-		left: -30%;
-		transform: translateY(-50%);
-		background-color: rgba(255, 255, 255, .8);
-		border-radius: 0 200% 200% 0;
-		transition: all 0.25s;
-		z-index: 1;
+  position: relative;
+  border-color: rgb(190, 188, 188);
+  /* background: linear-gradient(135deg, #9f82ff 0%, #7c5cff 45%, #6b8cff 100%); */
+  background: #1f1f1f;
+  /* box-shadow: 0 0px 24px rgba(124, 92, 255, 0.25); */
+  color: var(--mantine-color-white);
+  overflow: hidden;
+  span[data-name="hover"] {
+    display: inline-block;
+    transition: all 0.25s;
+    transform: translate(0, 0);
+  }
+  span[data-name="me"] {
+    margin-left: 0.25em;
+    transition: all 0.25s;
+    opacity: 1;
+  }
+  .block {
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: -30%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    /* border-radius: 0 200% 200% 0; */
+    transition: all 0.25s;
+    z-index: 1;
 
-		display: flex;
-		align-items: center;
-		justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-		span,
-		svg,
-		img {
-			color: var(--mantine-color-white);
-		}
-	}
-	&:hover {
-		background-color: var(--mantine-color-main-0);
-		span[data-name="me"] {
-			opacity: 0;
-		}
-		span[data-name="hover"] {
-			transition-delay: 0.2s;
-			transform: translate(1.5em, 0);
-		}
-		.block {
-			transition-delay: 0.2s;
-			left: 0;
-		}
-	}
+    span,
+    svg,
+    img {
+      color: var(--mantine-color-white);
+    }
+  }
+  &:hover {
+    /* background-color: var(--mantine-color-main-0); */
+    /* background: linear-gradient(135deg, #9f82ff 0%, #7c5cff 45%, #6b8cff 100%); */
+    box-shadow: 0 0px 24px rgba(124, 92, 255, 0.25);
+
+    span[data-name="me"] {
+      opacity: 0;
+    }
+    span[data-name="hover"] {
+      transition-delay: 0.2s;
+      transform: translate(1.5em, 0);
+    }
+    .block {
+      transition-delay: 0.2s;
+      left: 0;
+    }
+  }
 }

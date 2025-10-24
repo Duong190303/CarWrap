@@ -51,7 +51,7 @@
 	}
 
 	--text-white: #fff;
-	--primary-color-gradient: linear-gradient(90deg, #f666ae 0%, #f43c98 100%);
+	--primary-color-gradient: linear-gradient(90deg, #246FB4 0%, #359eff 100%);
 }
 
 ::-webkit-scrollbar {

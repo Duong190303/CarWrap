@@ -1,6 +1,6 @@
 .serviceCardCol {
   @media (max-width: $mantine-breakpoint-xs) {
-    background: linear-gradient(180deg, #fff 0%, #f666ae 100%);
+    background: linear-gradient(180deg, #fff 0%, #246FB4 100%);
   }
   &:last-child {
     .serviceCard {
@@ -30,7 +30,7 @@
 }
 
 .slide {
-  border: 1px solid #f666ae;
+  border: 1px solid #246FB4;
   height: rem(350px);
   width: rem(324px);
   border-radius: 20px;
@@ -47,7 +47,7 @@
 .control {
   background-color: #ffffff;
   box-shadow: none;
-  color: #f666ae;
+  color: #246FB4;
 }
 
 .serviceGridInner {

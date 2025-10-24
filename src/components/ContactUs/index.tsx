@@ -119,7 +119,7 @@ export const ContactUs: React.FC = () => {
                     style={{
                       display: "grid",
                       placeItems: "center",
-                      background: "#f666ae",
+                      background: "#246FB4",
                     }}
                   >
                     <Icon size={sizeIconSocial} color="#fff" />
@@ -128,18 +128,18 @@ export const ContactUs: React.FC = () => {
               </Flex>
             </Box>
           </Group>
-          <Divider  color={"#f666ae"}/>
+          <Divider  color={"#246FB4"}/>
           <Box style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             <Text fw={600}>More Infomation</Text>
             <Flex align="flex-start" gap={15} direction={"column"}>
               <Group gap={10}>
-                <IconBrandGmail size={20} stroke={1.5} color="#f666ae" />
-                <Text fz={{ base: 14, md: 16 }} c="#f666ae">
+                <IconBrandGmail size={20} stroke={1.5} color="#246FB4" />
+                <Text fz={{ base: 14, md: 16 }} c="#246FB4">
                   info@nailartstudio.com
                 </Text>
               </Group>
               <Group gap={10}>
-                <IconPhoneCall size={20} stroke={1.5} color="#f666ae" />
+                <IconPhoneCall size={20} stroke={1.5} color="#246FB4" />
                 <GradientText
                   colors={[
                     "#ff0066",
