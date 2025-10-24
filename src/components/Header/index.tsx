@@ -21,7 +21,7 @@ import Link from "next/link";
 import { ButtonDaisy } from "../ButtonDaisy";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import { DrawerNav } from "./Drawer/DrawerNav";
+// import { DrawerNav } from "./Drawer/DrawerNav";
 import { usePathname } from "next/navigation";
 import { NavItem } from "./Navbar/NavbarItem";
 import React from "react";
@@ -212,7 +212,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
             </Group>
           </Paper>
 
-          <DrawerNav />
+          {/* <DrawerNav /> */}
         </Group>
       </motion.div>
     </>
