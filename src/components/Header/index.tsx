@@ -171,7 +171,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
           <Group flex={1} h="100%">
             <UnstyledButton component={Link} href="#">
               <Image
-                src="/LogoCW_des.svg"
+                src="/LogoCW_nobg.png"
                 alt="logo"
                 fit="contain"
                 h="100%"
