@@ -21,11 +21,10 @@ import Link from "next/link";
 import { ButtonDaisy } from "../ButtonDaisy";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-// import { DrawerNav } from "./Drawer/DrawerNav";
+import { DrawerNav } from "./Drawer/DrawerNav";
 import { usePathname } from "next/navigation";
-import { NavItem } from "./Navbar/NavbarItem";
 import React from "react";
-
+import { NavItem } from "./Navbar/NavbarItem";
 type NavigationType = {
   id: string | number;
   label: string;
@@ -43,23 +42,23 @@ export const DEFAULT_NAVIGATION_ITEMS: NavigationType[] = [
   },
   {
     id: 2,
-    label: "News",
-    href: "/#newtoday",
-  },
-  {
-    id: 3,
     label: "Services",
     href: "/#",
     children: [
-      { id: "3a", label: "Car Wrapping", href: "/#service" },
+      { id: "2a", label: "Car Wrapping", href: "/#service" },
       {
-        id: "3b",
+        id: "2b",
         label: "Paint Protection",
         href: "/#service",
       },
-      { id: "3c", label: "Detailing", href: "/#service" },
-      { id: "3d", label: "Bodykit Installing", href: "/#service" },
+      { id: "2c", label: "Detailing", href: "/#service" },
+      { id: "2d", label: "Bodykit Installing", href: "/#service" },
     ],
+  },
+  {
+    id: 3,
+    label: "News",
+    href: "/#newtoday",
   },
   {
     id: 4,
@@ -68,13 +67,13 @@ export const DEFAULT_NAVIGATION_ITEMS: NavigationType[] = [
   },
   {
     id: 5,
-    label: "Contact Us",
-    href: "/#contact_us",
+    label: "About Us",
+    href: "/#about_us",
   },
   {
     id: 6,
-    label: "About Us",
-    href: "/#about_us",
+    label: "Contact Us",
+    href: "/#contact_us",
   },
 ];
 
@@ -103,8 +102,8 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
 
   return (
     <>
-      <Container size="xl" mx="auto" visibleFrom="sm" bg={"#F4F6F7"}>
-        <Flex gap={10} align="center" justify="space-between" w="100%" h={60}>
+      <Container size="xl" mx="auto" visibleFrom="md" bg={"#F4F6F7"}>
+        <Flex gap={10} align="center" justify="space-between" w="100%" h={60} >
           <Group gap="xs" wrap="nowrap">
             <IconMapPin size={18} color={theme.colors.cyan[6]} />
             <Text fz="sm" fw={500} c="#1f1f1f">
@@ -172,7 +171,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
           <Group flex={1} h="100%">
             <UnstyledButton component={Link} href="#">
               <Image
-                src="/LogoCW.png"
+                src="/LogoCW_des.svg"
                 alt="logo"
                 fit="contain"
                 h="100%"
@@ -196,6 +195,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
           </Box>
 
           <Paper
+          visibleFrom="md"
             component="nav"
             radius={0}
             withBorder={false}
@@ -212,7 +212,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
             </Group>
           </Paper>
 
-          {/* <DrawerNav /> */}
+          <DrawerNav items={DEFAULT_NAVIGATION_ITEMS} />
         </Group>
       </motion.div>
     </>

@@ -1,0 +1,75 @@
+.section {
+  background: #000;
+  padding: 52px 0 56px;
+}
+
+.heading {
+  color: #cfcfcf;
+  text-align: center;
+  letter-spacing: 0.04em;
+  margin-bottom: 28px;
+}
+
+.strip {
+  overflow-x: auto;         /* kéo ngang trên mobile */
+  -webkit-overflow-scrolling: touch;
+  padding: 8px 4px;
+}
+
+.strip::-webkit-scrollbar {
+  height: 6px;
+}
+.strip::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+
+.logoCard {
+  flex: 0 0 auto;           /* giữ kích thước khi scroll ngang */
+  /* height: clamp(32px, 6.5vw, 56px); */
+  min-width: clamp(72px, 14vw, 140px);
+  display: grid;
+  place-items: center;
+  padding: clamp(8px, 1.2vw, 12px);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+              filter 220ms ease, opacity 220ms ease;
+  opacity: 0.75;
+  filter: grayscale(100%);
+  will-change: transform;
+}
+
+.logo {
+  /* Image của Mantine tuân theo kích thước container, không cần width/height */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Hiệu ứng nảy + phóng to khi hover/focus */
+.logoCard:hover,
+.logoCard:focus-within {
+  transform: translateY(-6px) scale(1.06);
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* Nảy nhẹ hơn trên desktop lớn */
+@media (min-width: 1200px) {
+  .logoCard:hover,
+  .logoCard:focus-within {
+    transform: translateY(-8px) scale(1.08);
+  }
+}
+
+/* Giãn đều khi đủ rộng: chuyển sang wrap nhiều hàng */
+@media (min-width: 780px) {
+  .strip {
+    overflow-x: visible;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  /* .logoCard {
+    flex-basis: clamp(120px, 12vw, 180px);
+  } */
+}
+

@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Container,
-  Title,
+  rem,
   Grid,
   GridCol,
   Card,
@@ -94,13 +94,13 @@ export const Lasted: React.FC = () => {
         background:
           "radial-gradient(80% 80% at 50% 0%, #171a20 0%, #0f1114 60%)",
       }}
-      pt={70}
+      pt={{ base: rem(36), md: rem(48) , lg: rem(70)}}
     >
       <Container size="100%" py={0}>
         <Stack gap="xs" align="center" mb="xl">
-          <Title order={2} c="white" style={{ letterSpacing: 2 }}>
+          <Text fz={{ base: rem(24), md: rem(28), lg: rem(32) }} fw={900} c="white" style={{ letterSpacing: 2 }}>
             LASTED PROJECTS
-          </Title>
+          </Text>
         </Stack>
 
         <Grid gutter={0}>

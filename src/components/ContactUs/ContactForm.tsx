@@ -1,166 +1,209 @@
+"use client";
+
 import {
-  Stack,
-  Text,
+  Button,
+  Checkbox,
+  CheckboxGroup,
   Grid,
+  GridCol,
+  Group,
+  Paper,
+  Select,
+  Text,
   TextInput,
   Textarea,
-  Button,
-  Box,
   rem,
-  Select,
+  Tooltip,
+  Box,
 } from "@mantine/core";
+import { DateInput } from "@mantine/dates";
 import { useForm } from "@mantine/form";
+import {
+  IconCalendar,
+  IconMail,
+  IconPhone,
+  IconUser,
+} from "@tabler/icons-react";
+import { BRANDS, DEFAULT_VALUES, SERVICE_OPTIONS } from "./constants";
+import type { BookingFormProps, FormValues } from "./types";
+import classes from "./ContactUs.module.css";
 
-export const ContactForm: React.FC = () => {
-  const form = useForm({
-    initialValues: {
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: "",
-    },
+export const ContactForm: React.FC<BookingFormProps> = ({
+  initial,
+  apiEndpoint = "/api/booking",
+}: BookingFormProps) => {
+  const form = useForm<FormValues>({
+    initialValues: { ...DEFAULT_VALUES, ...initial },
+    validateInputOnBlur: true,
     validate: {
-      name: (v) => (!v ? "Please enter your name" : null),
-      email: (v) =>
-        v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "Invalid email" : null,
-      phone: (v) => (!v ? "Please enter your phone" : null),
+      name: (v) => (v.trim().length >= 2 ? null : "Enter a valid name"),
+      phone: (v) =>
+        /^\+?[0-9\s\-()]{8,}$/.test(v) ? null : "Phone number is invalid",
+      email: (v) => (/^\S+@\S+\.\S+$/.test(v) ? null : "Email is invalid"),
+      services: (v) => (v.length > 0 ? null : "Select at least one service"),
+      date: (v) => (v ? null : "Pick a date"),
+      accept: (v) => (v ? null : "You must agree to the terms"),
     },
   });
+
+  const handleSubmit = async (values: FormValues) => {
+    const res = await fetch(apiEndpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    });
+
+    if (!res.ok) {
+      alert("Something went wrong. Please try again later.");
+      return;
+    }
+
+    alert("Your appointment request has been sent!");
+    form.reset();
+  };
+
   return (
-    <Stack
-      w={{ base: "100%", md: "50%" }}
-      bg={"#FBCDE3"}
-      p={30}
-      style={{ borderRadius: 30 }}
+    <Paper
+      variant="transparent"
+      shadow="xxl"
+      p="lg"
+      radius="md"
+      className={classes.formCard}
     >
-      <Box
-        w={{ base: 250, sm: 340 }}
-        display={"flex"}
-        style={{ flexDirection: "column", justifyContent: "space-between" }}
+      <Text
+        fz={{ base: rem(24), md: rem(28), lg: rem(32) }}
+        fw={700}
+        className={classes.formTitle}
       >
-        <Text
-          fw={1000}
-          c={"#fff"}
-          fz={{ base: 30, sm: 40 }}
-          w={{ base: 250, sm: 340 }}
-        >
-          Book Your
-        </Text>
-        <Text
-          fw={1000}
-          display={"flex"}
-          style={{ justifyContent: "flex-end" }}
-          c={"#fff"}
-          fz={{ base: 30, sm: 40 }}
-          w={"100%"}
-        >
-          {" "}
-          Appointment
-        </Text>
-      </Box>
-      <Box
-        component="form"
-        onSubmit={form.onSubmit((values) => {
-          // TODO: handle submit (fetch/axios)
-          console.log(values);
-        })}
-      >
-        <Grid gutter={20}>
-          {/* Name */}
-          <Grid.Col span={{ base: 12, sm: 6 }}>
+        BOOK A GARAGE SERVICE
+      </Text>
+      <Box className={classes.stripe} />
+
+      <form onSubmit={form.onSubmit(handleSubmit)}>
+        <Grid gutter="md">
+          <GridCol
+            span={{ base: 12, sm: 4 }}
+            style={{ alignItems: "flex-end", display: "flex" }}
+          >
+            <Select
+              aria-label="Salutation"
+              data={["Mr", "Ms", "Mx"]}
+              {...form.getInputProps("salutation")}
+            />
+          </GridCol>
+
+          <GridCol span={{ base: 12, sm: 8 }}>
             <TextInput
+              required
               label="Name"
-              placeholder="Full name"
-              radius="md"
-              size="md"
-              styles={{
-                input: { borderRadius: rem(12) },
-                label: { fontWeight: 600 },
-              }}
+              leftSection={<IconUser size={16} />}
+              placeholder="Your name"
               {...form.getInputProps("name")}
             />
-          </Grid.Col>
+          </GridCol>
 
-          {/* Email */}
-
-          {/* Phone */}
-          <Grid.Col span={{ base: 12, sm: 6 }}>
+          <GridCol span={{ base: 12, sm: 6 }}>
             <TextInput
-              label="Phone number"
-              placeholder="(124) 454 - 6452"
-              radius="md"
-              size="md"
-              styles={{
-                input: { borderRadius: rem(12) },
-                label: { fontWeight: 600 },
-              }}
+              required
+              label="Phone"
+              leftSection={<IconPhone size={16} />}
+              placeholder="+84 ..."
               {...form.getInputProps("phone")}
             />
-          </Grid.Col>
+          </GridCol>
 
-          {/* Service */}
-          <Grid.Col span={{ base: 12, sm: 6 }}>
-            <Select
-              label="Service"
-              placeholder="All services"
-              data={[
-                "Classic Manicure",
-                "Gel Manicure",
-                "Pedicure",
-                "Nail Art",
-                "Acrylic/Extensions",
-                "Combo",
-              ]}
-              radius="md"
-              size="md"
-              styles={{
-                input: { borderRadius: rem(12) },
-                label: { fontWeight: 600 },
-              }}
-              {...form.getInputProps("service")}
+          <GridCol span={{ base: 12, sm: 6 }}>
+            <TextInput
+              required
+              label="Email"
+              leftSection={<IconMail size={16} />}
+              placeholder="you@email.com"
+              {...form.getInputProps("email")}
             />
-          </Grid.Col>
+          </GridCol>
 
-          {/* Message */}
-          <Grid.Col span={12}>
+          <GridCol span={12}>
+            <Text
+              size="xs"
+              fw={600}
+              c="dark.6"
+              mb={6}
+              className={classes.legend}
+            >
+              SERVICES
+            </Text>
+            <CheckboxGroup {...form.getInputProps("services")} withAsterisk>
+              <Group gap="lg">
+                {SERVICE_OPTIONS.map((s) => (
+                  <Checkbox
+                    key={s.value}
+                    value={s.value}
+                    label={s.label}
+                    color={"#389fff"}
+                  />
+                ))}
+              </Group>
+            </CheckboxGroup>
+          </GridCol>
+
+          <GridCol span={{ base: 12, sm: 6 }}>
+            <Select
+              label="BRAND"
+              data={BRANDS}
+              {...form.getInputProps("brand")}
+            />
+          </GridCol>
+
+          <GridCol span={{ base: 12, sm: 6 }}>
+            <Tooltip label="Select your preferred date">
+              <DateInput
+                label="SCHEDULE"
+                placeholder="mm/dd/yyyy"
+                leftSection={<IconCalendar size={16} />}
+                valueFormat="MM/DD/YYYY"
+                {...form.getInputProps("date")}
+              />
+            </Tooltip>
+          </GridCol>
+
+          <GridCol span={12}>
             <Textarea
               label="Message"
-              placeholder="Please type your message here..."
-              minRows={4}
+              minRows={5}
               autosize
-              radius="md"
-              size="md"
-              styles={{
-                input: { borderRadius: rem(12) },
-                label: { fontWeight: 600 },
-              }}
+              placeholder="Vehicle details, service notes, preferred time..."
               {...form.getInputProps("message")}
             />
-          </Grid.Col>
+          </GridCol>
 
-          {/* Submit button */}
-          <Grid.Col span={12}>
-            <Stack align="flex-start">
-              <Button
-                type="submit"
-                size="md"
-                radius="xl"
-                px={24}
-                styles={{
-                  root: {
-                    background:
-                      "linear-gradient(135deg, #246FB4 0%, #F78AC5 100%) ",
-                    boxShadow: "0 10px 24px rgba(246, 102, 174, 0.25)",
-                  },
-                }}
-              >
-                Send message
-              </Button>
-            </Stack>
-          </Grid.Col>
+          <GridCol span={12}>
+            <Checkbox
+              color={"#389fff"}
+              label={
+                <Text size="xs">
+                  I have read the{" "}
+                  <Text span fw={600} className={classes.link}>
+                    “General Terms Of Use”
+                  </Text>{" "}
+                  and agree to it
+                </Text>
+              }
+              {...form.getInputProps("accept", { type: "checkbox" })}
+            />
+          </GridCol>
+
+          <GridCol span={12}>
+            <Button
+              type="submit"
+              radius="sm"
+              size="md"
+              className={classes.submit}
+            >
+              BOOK APPOINTMENT
+            </Button>
+          </GridCol>
         </Grid>
-      </Box>
-    </Stack>
+      </form>
+    </Paper>
   );
 };

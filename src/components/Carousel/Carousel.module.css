@@ -13,3 +13,9 @@
     background: var(--mantine-color-main-0);
   }
 }
+
+/* .slide{
+  @media (min-width: $mantine-breakpoint-xl) {
+    height: 900px !important;
+  }
+} */

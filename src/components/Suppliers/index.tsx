@@ -11,7 +11,6 @@ export const Suppliers: React.FC = () => {
         >
           <SupplierList />
 
-          {/* <ButtonOutline>View all services</ButtonOutline> */}
         </Flex>
       </Container>
     </Box>

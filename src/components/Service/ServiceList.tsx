@@ -111,7 +111,6 @@
 import React from "react";
 import {
   Box,
-  Container,
   SimpleGrid,
   Text,
   Stack,
@@ -214,34 +213,32 @@ export const ServiceList: React.FC<{ items?: ServiceItem[] }> = ({
   items?: ServiceItem[];
 }) => {
   return (
-    <Box py={rem(48)} style={{ background: "var(--mantine-color-dark-8)" }}>
-      <Container size="lg">
-        <Stack align="center" gap={4} mb="lg">
-          <Text
-            fz={rem(34)}
-            fw={900}
-            tt="uppercase"
-            c="#EAF0FF"
-            style={{ letterSpacing: 1 }}
-          >
-            Our Services
-          </Text>
-          <Text ta="center" c="dimmed" maw={780}>
-            There is no challenge we would not commit to do. Our work meets the
-            highest quality standards and professionalism in the business.
-            Offering premium services in car wrapping, commercial vinyl
-            installations, automobile window tinting, yacht wrapping, paint
-            protection film and ceramic paint protection.
-          </Text>
-        </Stack>
+    <>
+      <Stack align="center" gap={4} mb="lg">
+        <Text
+          fz={{ base: rem(24), md: rem(28), lg: rem(32) }}
+          fw={900}
+          tt="uppercase"
+          c="#EAF0FF"
+          style={{ letterSpacing: 1 }}
+        >
+          Our Services
+        </Text>
+        <Text ta="center" c="dimmed" maw={780}>
+          There is no challenge we would not commit to do. Our work meets the
+          highest quality standards and professionalism in the business.
+          Offering premium services in car wrapping, commercial vinyl
+          installations, automobile window tinting, yacht wrapping, paint
+          protection film and ceramic paint protection.
+        </Text>
+      </Stack>
 
-        <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
-          {items.map((it) => (
-            <ServiceTile key={it.id} item={it} />
-          ))}
-        </SimpleGrid>
-      </Container>
-    </Box>
+      <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
+        {items.map((it) => (
+          <ServiceTile key={it.id} item={it} />
+        ))}
+      </SimpleGrid>
+    </>
   );
 };
 

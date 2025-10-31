@@ -1,7 +1,7 @@
 "use client";
 
 import { Carousel as MantineCarousel } from "@mantine/carousel";
-import { BackgroundImage, Flex, Text, Box } from "@mantine/core";
+import { BackgroundImage, Box } from "@mantine/core";
 import classes from "./Carousel.module.css";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
@@ -10,7 +10,7 @@ export const Carousel: React.FC = () => {
   const autoplay = useRef(Autoplay({ delay: 3000 }));
   return (
     <Box component="section">
-      <Flex
+      {/* <Flex
         pos={"absolute"}
         hiddenFrom="xs"
         direction="column"
@@ -27,11 +27,12 @@ export const Carousel: React.FC = () => {
         <Text w={260} fz={40} c={"#FFFFFF"} fw={700}>
           WE BRING IT TO YOU
         </Text>
-      </Flex>
+      </Flex> */}
       <MantineCarousel
         classNames={{
           indicators: classes.indicators,
           indicator: classes.indicator,
+          slide: classes.slide,
         }}
         withIndicators
         withControls={false}
@@ -43,7 +44,7 @@ export const Carousel: React.FC = () => {
           <BackgroundImage
             src="/assets/carousel/img1.jpg"
             w="100%"
-            h={{ base: 660, xl: 630, xxl: 640 }}
+            h={{ base: 660, xl: 750, xxl: 850 }}
             bgsz="cover"
             bgp="center"
           />
@@ -52,7 +53,7 @@ export const Carousel: React.FC = () => {
           <BackgroundImage
             src="/assets/carousel/img2.jpg"
             w="100%"
-            h={{ base: 660, xl: 630, xxl: 640 }}
+            h={{ base: 660, xl: 750, xxl: 850 }}
             bgsz="cover"
             bgp="center"
           />
@@ -61,7 +62,7 @@ export const Carousel: React.FC = () => {
           <BackgroundImage
             src="/assets/carousel/img3.jpg"
             w="100%"
-            h={{ base: 660, xl: 630, xxl: 640 }}
+            h={{ base: 660, xl: 750, xxl: 850 }}
             bgsz="cover"
             bgp="center"
           />
@@ -70,7 +71,7 @@ export const Carousel: React.FC = () => {
           <BackgroundImage
             src="/assets/carousel/img4.jpg"
             w="100%"
-            h={{ base: 660, xl: 630, xxl: 640 }}
+            h={{ base: 660, xl: 750, xxl: 850 }}
             bgsz="cover"
             bgp="center"
           />

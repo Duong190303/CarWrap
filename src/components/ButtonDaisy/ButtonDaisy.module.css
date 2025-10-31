@@ -73,4 +73,8 @@
       left: 0;
     }
   }
+
+  @media (max-width: 768px) {
+  background: linear-gradient(135deg, #7ABEFF 0%, #389FFF 50%, #0B5ED7 100%);
+  }
 }

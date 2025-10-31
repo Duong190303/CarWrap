@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { Button } from '@mantine/core';
-import { IconPhoto } from '@tabler/icons-react';
-import Link from 'next/link';
+import { Button } from "@mantine/core";
+import { IconPhoto } from "@tabler/icons-react";
+import Link from "next/link";
 
-export function GalleryButton({ href = '/gallery' }: { href?: string }) {
+export function GalleryButton({ href = "/gallery" }: { href?: string }) {
   return (
     <Button
       component={Link}
@@ -12,7 +12,7 @@ export function GalleryButton({ href = '/gallery' }: { href?: string }) {
       size="md"
       radius="md"
       leftSection={<IconPhoto size={18} />}
-      color="yellow"
+      color={"#389fff"}
       fw={700}
     >
       GALLERY

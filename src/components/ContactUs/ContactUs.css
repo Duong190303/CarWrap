@@ -1,6 +1,0 @@
-.TitleForm {
-  @media (max-width: $mantine-breakpoint-sm) {
-    border-bottom: 1px soid #246FB4;
-    padding-bottom: 5px;
-  }
-}

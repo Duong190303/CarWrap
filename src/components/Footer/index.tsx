@@ -4,7 +4,7 @@ export const Footer: React.FC = () => {
     <Box
       component="section"
     //   h={175}
-      bg={"#0D0105"}
+      bg={"#171a20 "}
       style={{ alignItems: "center" }}
       p={{ base:  "10px 10px 0", xl: "10px 100px 0", "xxl": "10px 150px 0" }}
     >
@@ -20,13 +20,13 @@ export const Footer: React.FC = () => {
           <Text fz={14} c={"#f0f0f0"}>Terms & Condition</Text>
         </Box>
         <Flex
-          w={{ base: "100%", xl: "55%" }}
+          w={{ base: "100%", xl: "52%" }}
           direction={{ base: "column", sm: "row" }}
           justify={"space-between"}
           align={"center"}
           gap={15}
         >
-          <Image fit="cover" w={{ base: 200, sm: 170 }} src="/LogoDA.svg" alt="logo" />
+          <Image fit="cover" w={{ base: 50, sm: 40 }} src="/LogoCW.svg" alt="logo" />
           <Box display={"flex"} style={{ flexDirection: "row", gap: 15 }}>
             <Image
               fit="cover"
@@ -67,7 +67,7 @@ export const Footer: React.FC = () => {
         }}
       >
         <Text c={"#8D8789"} fz={9}>
-          Copyright © 2022 Nail Art Studio, All rights reserved.
+          Copyright © 2025 CarWrap, All rights reserved.
         </Text>
       </Box>
     </Box>
