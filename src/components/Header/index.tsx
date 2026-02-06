@@ -103,7 +103,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
   return (
     <>
       <Container size="xl" mx="auto" visibleFrom="md" bg={"#0F172A"}>
-        <Flex gap={10} align="center" justify="space-between" w="100%" h={60} >
+        <Flex gap={10} align="center" justify="space-between" w="100%" h={60}>
           <Group gap="xs" wrap="nowrap">
             <IconMapPin size={18} color={theme.colors.cyan[6]} />
             <Text fz="sm" fw={500} c="#ffffff">
@@ -195,7 +195,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
           </Box>
 
           <Paper
-          visibleFrom="md"
+            visibleFrom="md"
             component="nav"
             radius={0}
             withBorder={false}
