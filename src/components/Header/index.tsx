@@ -102,11 +102,11 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
 
   return (
     <>
-      <Container size="xl" mx="auto" visibleFrom="md" bg={"#F4F6F7"}>
+      <Container size="xl" mx="auto" visibleFrom="md" bg={"#0F172A"}>
         <Flex gap={10} align="center" justify="space-between" w="100%" h={60} >
           <Group gap="xs" wrap="nowrap">
             <IconMapPin size={18} color={theme.colors.cyan[6]} />
-            <Text fz="sm" fw={500} c="#1f1f1f">
+            <Text fz="sm" fw={500} c="#ffffff">
               38A Nguyễn Quý Đức, P. An Phú, TP. Thủ Đức, TP. HCM
             </Text>
           </Group>
@@ -118,7 +118,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
 
           <Group gap="xs" wrap="nowrap">
             <IconClock size={18} color={theme.colors.cyan[6]} />
-            <Text fz="sm" fw={500} c="#1f1f1f">
+            <Text fz="sm" fw={500} c="#ffffff">
               Thứ 2 - 7 / 08:30 AM - 06:00 PM
             </Text>
           </Group>
@@ -130,7 +130,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
 
           <Group gap="xs" wrap="nowrap">
             <IconHeadphones size={18} color={theme.colors.cyan[6]} />
-            <Text fz="sm" fw={500} c="#1f1f1f">
+            <Text fz="sm" fw={500} c="#ffffff">
               Tư vấn: (+84) 933 622 225
             </Text>
           </Group>
