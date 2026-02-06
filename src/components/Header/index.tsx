@@ -107,7 +107,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
           <Group gap="xs" wrap="nowrap">
             <IconMapPin size={18} color={theme.colors.cyan[6]} />
             <Text fz="sm" fw={500} c="#ffffff">
-              38A Nguyễn Quý Đức, P. An Phú, TP. Thủ Đức, TP. HCM
+              38A Nguyen Quy Duc, An Phu Ward, City. Thu Duc, City. HCM{" "}
             </Text>
           </Group>
 
@@ -119,7 +119,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
           <Group gap="xs" wrap="nowrap">
             <IconClock size={18} color={theme.colors.cyan[6]} />
             <Text fz="sm" fw={500} c="#ffffff">
-              Thứ 2 - 7 / 08:30 AM - 06:00 PM
+              Monday - Saturday / 08:30 AM - 06:00 PM
             </Text>
           </Group>
 
@@ -131,7 +131,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
           <Group gap="xs" wrap="nowrap">
             <IconHeadphones size={18} color={theme.colors.cyan[6]} />
             <Text fz="sm" fw={500} c="#ffffff">
-              Tư vấn: (+84) 933 622 225
+              Consulting: (+84) 933 622 225
             </Text>
           </Group>
 

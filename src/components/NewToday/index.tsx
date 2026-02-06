@@ -150,7 +150,7 @@ const defaultItems: NewsItem[] = [
     category: "PPF",
     categoryColor: "#111",
     title:
-      "PHIM PPF OPTIC SHIELD – SẢN PHẨM BẢO VỆ Ô TÔ CAO CẤP CÓ MẶT TẠI WRAPSTYLE VIỆT…",
+      "PPF OPTICSHIELD FILM – PREMIUM CAR PROTECTION PRODUCT AVAILABLE AT WRAPSTYLE VIET...",
     date: "March 2, 2025",
     image: "/assets/carousel/img1.jpg",
     href: "#",
@@ -160,7 +160,7 @@ const defaultItems: NewsItem[] = [
     category: "WRAPPING",
     categoryColor: "#FFB703",
     title:
-      "CẬN CẢNH ‘SIÊU BÒ’ LAMBORGHINI URUS S XUỐNG PHỐ VỚI BỘ CÁNH XANH BABY BLUE…",
+      "Close-up of 'SUPER COW' LAMBORGHINI URUS S GOING DOWN THE STREETS WITH BABY BLUE OUTFITS...",
     date: "October 23, 2024",
     image: "/assets/carousel/img2.jpg",
     href: "#",
@@ -169,8 +169,7 @@ const defaultItems: NewsItem[] = [
     id: 3,
     category: "HOT NEWS",
     categoryColor: "#F03E3E",
-    title:
-      "WRAPSTYLE ‘LÀM ĐẸP’ CHO DÀN XE PORSCHE CLUB VIETNAM HẬU CHUYẾN HÀNH TRÌNH…",
+    title: "WRAPSTYLE 'BEAUTY' FOR PORSCHE CLUB VIETNAM AFTER THE JOURNEY...",
     date: "October 17, 2024",
     image: "/assets/carousel/img3.jpg",
     href: "#",
