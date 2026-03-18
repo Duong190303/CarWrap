@@ -9,7 +9,7 @@
 .bgImage {
   position: absolute;
   inset: 0;
-  background-image: url('/logobrand/supplierimage.jpg');
+  background-image: url("/logobrand/supplierimage.jpg");
   background-size: cover;
   background-position: center;
   filter: blur(0px) brightness(0.55) saturate(0.8);
@@ -38,7 +38,11 @@
   width: clamp(280px, 35vw, 480px);
   height: clamp(280px, 35vw, 480px);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 159, 255, 0.12) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(56, 159, 255, 0.12) 0%,
+    transparent 70%
+  );
   filter: blur(40px);
   z-index: 1;
   pointer-events: none;
@@ -51,7 +55,11 @@
   width: clamp(240px, 30vw, 420px);
   height: clamp(240px, 30vw, 420px);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(168, 85, 247, 0.1) 0%,
+    transparent 70%
+  );
   filter: blur(40px);
   z-index: 1;
   pointer-events: none;
@@ -73,7 +81,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color:  var(--secondary);
+  color: var(--secondary);
   margin-bottom: rem(20px);
 }
 
@@ -82,7 +90,7 @@
   height: rem(6px);
   border-radius: 50%;
   background: var(--secondary);
-  box-shadow: 0 0 8px  var(--secondary);
+  box-shadow: 0 0 8px var(--secondary);
   flex-shrink: 0;
 }
 
@@ -106,8 +114,15 @@
   font-weight: 900;
   font-family: var(--mantine-font-family);
   text-transform: uppercase;
-  font-size: clamp(2.8rem, 6vw, 5rem);
   display: block;
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    font-size: rem(32px);
+  }
+
+  @media (min-width: $mantine-breakpoint-sm) {
+    font-size: rem(48px);
+  }
 }
 
 .lineDark {
@@ -163,7 +178,9 @@
   justify-content: center;
   color: var(--secondary);
   flex-shrink: 0;
-  transition: background 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .hotlineLink:hover .hotlineIcon {
@@ -180,7 +197,9 @@
 
 .hotlineArrow {
   color: var(--text-secondary);
-  transition: color 0.2s ease, transform 0.25s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.25s ease;
 }
 
 .hotlineLink:hover .hotlineArrow {
@@ -243,7 +262,10 @@
   background: rgba(255, 255, 255, 0.05) !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
   color: var(--text-primary) !important;
-  transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease !important;
+  transition:
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease !important;
 }
 
 .input::placeholder {
@@ -290,7 +312,9 @@
   font-weight: 800 !important;
   letter-spacing: 0.1em !important;
   box-shadow: 0 4px 4px rgba(56, 159, 255, 0.3) !important;
-  transition: box-shadow 0.3s ease, transform 0.25s ease !important;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.25s ease !important;
 }
 
 .submit:hover {

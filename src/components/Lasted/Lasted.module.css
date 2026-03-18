@@ -19,8 +19,8 @@
   opacity: 0.85;
 }
 
-.heading {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+.heading,
+.gradientText {
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -29,14 +29,26 @@
   margin: 0;
   align-items: center;
   display: flex;
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    font-size: rem(20px);
+  }
+
+  @media (min-width: $mantine-breakpoint-sm) {
+    font-size: rem(32px);
+  }
 }
 
 .headingUnderline {
-  width: rem(72px);
+  width: rem(150px);
   height: rem(3px);
   border-radius: 999px;
   background: linear-gradient(90deg, #389fff 0%, #a855f7 100%);
   margin-top: rem(4px);
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    width: rem(100px);
+  }
 }
 
 /* ═══════════════════════════════════════════════

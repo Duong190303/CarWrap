@@ -40,7 +40,6 @@ export function LeftPane({
 }: Props) {
   return (
     <Stack gap={0} className={classes.leftWrap} justify="center" h="100%">
-
       {/* ── Eyebrow ── */}
       <motion.div
         initial={{ opacity: 0, x: -24 }}
@@ -68,7 +67,7 @@ export function LeftPane({
                 <GradientText
                   gradient="linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)"
                   animationSpeed={10}
-                  fontSize="clamp(5rem, 6rem, 2.8rem)"
+                  className={classes.sloganLine}
                   fontWeight={900}
                 >
                   {line}
@@ -118,7 +117,6 @@ export function LeftPane({
           </Anchor>
         </Stack>
       </motion.div>
-
     </Stack>
   );
 }

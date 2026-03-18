@@ -163,8 +163,8 @@ export const Lasted: React.FC = () => {
               <GradientText
                 gradient="linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)"
                 animationSpeed={10}
-                fontSize="clamp(1.5rem, 3vw, 2rem)"
                 fontWeight={900}
+                className={classes.gradientText}
               >
                 PROJECTS
               </GradientText>

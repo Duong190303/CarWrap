@@ -74,7 +74,11 @@ export const Hero: React.FC = () => {
             py={5}
             style={{ background: "var(--background)", borderRadius: "50px" }}
           >
-            <Text size="sm" fw={600} style={{ color: "var(--secondary)" }}>
+            <Text
+              className={classes.HeroBadge}
+              fw={600}
+              style={{ color: "var(--secondary)" }}
+            >
               Premium Automotive Wrapping
             </Text>
           </Box>
@@ -101,13 +105,16 @@ export const Hero: React.FC = () => {
               flexDirection: "column",
               alignItems: "center",
             }}
+            className={classes.HeroTitle}
           >
-            PREMIUM CAR WRAP
+            PREMIUM
+            <Box component="br" hiddenFrom="xs" />
+            CAR WRAP
             <GradientText
               gradient="linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)"
               animationSpeed={10}
-              fontSize="clamp(3.75rem, 3.75rem, 3.75rem)"
               fontWeight={900}
+              className={classes.HeroTitleGradient}
             >
               SERVICE
             </GradientText>
@@ -115,7 +122,7 @@ export const Hero: React.FC = () => {
 
           {/* ── SUBTITLE ── */}
           <Text
-            size="lg"
+            className={classes.HeroSubtitle}
             c="var(--mantine-color-dimmed)"
             ta="center"
             fw={500}
@@ -210,7 +217,7 @@ export const Hero: React.FC = () => {
               <motion.div variants={statItem}>
                 <Flex direction="column" align="center" gap={10} miw={130}>
                   <Text
-                    fz={{ base: 24, xs: 30, md: 48 }}
+                    fz={{ base: 20, xs: 32, md: 48 }}
                     style={{
                       fontWeight: 900,
                       color: "var(--text-white)",
@@ -226,6 +233,7 @@ export const Hero: React.FC = () => {
                     {stat.suffix}
                   </Text>
                   <Text
+                    fz={{ base: 10, xs: 13, md: 16 }}
                     size="xs"
                     fw={700}
                     ta="center"
@@ -233,6 +241,7 @@ export const Hero: React.FC = () => {
                       color: "var(--mantine-color-dimmed)",
                       textTransform: "uppercase",
                     }}
+                    className={classes.statLabel}
                   >
                     {stat.label}
                   </Text>

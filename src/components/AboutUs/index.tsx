@@ -117,7 +117,7 @@ export const AboutUs: React.FC<AboutProps> = ({
                     <GradientText
                       gradient="linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)"
                       animationSpeed={10}
-                      fontSize={"clamp(3.75rem, 3.75rem, 3.75rem)"}
+                      className={classes.gradientText}
                       fontWeight={900}
                     >
                       {headingLine2}

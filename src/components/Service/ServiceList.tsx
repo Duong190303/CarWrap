@@ -100,7 +100,7 @@ export const ServiceList: React.FC<{ items?: ServiceItem[] }> = ({
       >
         <Stack align="center" gap={rem(6)} mb={rem(40)}>
             <Text
-              fz={{ base: rem(24), md: rem(28), lg: rem(32) }}
+              fz={{ base: rem(20),sm: rem(32)}}
               fw={900}
               tt="uppercase"
               c="var(--text-white)"
@@ -108,7 +108,7 @@ export const ServiceList: React.FC<{ items?: ServiceItem[] }> = ({
             >
               Our Service
             </Text>
-          <Text ta="center" c="dimmed" maw={780} fz="sm">
+          <Text ta="center" c="dimmed" maw={780} fz={{ base: rem(13), sm: rem(14) }}>
             There is no challenge we would not commit to. Our work meets the
             highest quality standards and professionalism in the business —
             offering premium car wrapping, vinyl installations, window tinting,

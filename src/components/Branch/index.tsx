@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { Box, Container, Grid, Text, Image, rem, } from "@mantine/core";
+import { Box, Container, Grid, Text, Image, rem } from "@mantine/core";
 import { motion, useInView } from "framer-motion";
 import { BranchTable } from "./BranchTable";
 // import { GradientText } from "../UI/GradientText/GradientText";
@@ -77,18 +77,18 @@ export const Branch: React.FC = () => {
             </Text>
 
             {/* main title */}
-              <Text
-                fz={{ base: rem(28), md: rem(36), lg: rem(32) }}
-                fw={900}
-                tt="uppercase"
-                c="var(--text-primary)"
-                style={{ letterSpacing: "0.06em", lineHeight: 1 }}
-              >
-                OUR GROUP
-              </Text>
+            <Text
+              fz={{ base: rem(20), sm: rem(32), lg: rem(32) }}
+              fw={900}
+              tt="uppercase"
+              c="var(--text-primary)"
+              style={{ letterSpacing: "0.06em", lineHeight: 1 }}
+            >
+              OUR GROUP
+            </Text>
             <Text
               ta="center"
-              fz="sm"
+              fz={{ base: rem(13), sm: rem(14) }}
               c="var(--text-secondary)"
               mt={rem(16)}
               lh={1.6}
