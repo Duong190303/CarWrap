@@ -1,43 +1,170 @@
-.controls {
-  @media (max-width: $mantine-breakpoint-xs) {
-    width: 110%;
-    left: -20px;
+.section {
+  background: var(--background);
+  padding: rem(80px) 0 rem(80px);
+  /* overflow: hidden REMOVED — cắt chữ italic */
+}
+
+/* ═══════════════════════════════════════════════
+   LEFT — TEXT
+═══════════════════════════════════════════════ */
+.eyebrow {
+  font-size: rem(13px);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+.headingWrap {
+  display: flex;
+  flex-direction: column;
+  /* gap: rem(12px); */
+  overflow: visible;
+}
+
+.heading {
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--text-white);
+  margin: 0;
+  /*
+   * italic glyphs (đặc biệt chữ cuối dòng) nhô ra ngoài bounding box
+   * padding-right bù phần đó, padding-bottom bù descender
+   */
+  padding: 0 0.15em 0.1em 0;
+  /* đảm bảo không bao giờ bị clip */
+  overflow: visible;
+  display: block;
+}
+
+/* "CARWRAP" dòng 2 — gradient purple→pink như screenshot */
+.headingGradient {
+  background: linear-gradient(90deg, #a855f7 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* gradient text cần display:inline-block để clip đúng */
+  display: inline-block;
+  /* thêm padding để chữ italic không bị cắt cả khi dùng clip */
+  padding: 0 0.15em 0.12em 0;
+}
+
+.headingAccent {
+  width: rem(52px);
+  height: rem(3px);
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--secondary) 0%, #a855f7 100%);
+}
+
+.historyTitle {
+  font-size: rem(16px);
+  font-weight: 800;
+  color: var(--text-primary);
+  font-style: italic;
+}
+
+.body {
+  font-size: rem(14px);
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.cta {
+  background: linear-gradient(135deg, var(--secondary) 0%, #0b5ed7 100%) !important;
+  border: none !important;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease !important;
+  will-change: transform;
+}
+
+.cta:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════
+   RIGHT — STAGGERED PHOTO STACK
+═══════════════════════════════════════════════ */
+.photoStack {
+  position: relative;
+  min-height: rem(420px);
+
+  @media (max-width: $mantine-breakpoint-md) {
+    min-height: rem(340px);
   }
 
-  @media (min-width: $mantine-breakpoint-sm) {
-    width: 116%;
-    left: -50px;
-  }
-
-  @media (min-width: $mantine-breakpoint-md) {
-    width: 112%;
-  }
-
-  @media (min-width: $mantine-breakpoint-xl) {
-    width: 110%;
-    left: -65px;
-  }
-
-  @media (min-width: $mantine-breakpoint-xxl) {
-    width: 105%;
-    left: -55px;
+  @media (max-width: $mantine-breakpoint-sm) {
+    min-height: rem(280px);
   }
 }
 
-.control {
-  background-color: #ffffff;
-  box-shadow: none;
-  color: #246FB4;
+.photo {
+  object-fit: cover;
+  display: block;
+  border-radius: rem(16px);
 }
 
-.viewport {
-  @media (max-width: $mantine-breakpoint-xs) {
-    padding: 0 30px;
+.photoWrap1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48%;
+  height: rem(210px);
+  border-radius: rem(16px);
+  overflow: hidden;
+  transform: rotate(-5deg);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  z-index: 1;
+  will-change: transform;
+
+  @media (max-width: $mantine-breakpoint-md) {
+    height: rem(170px);
   }
 }
 
-.slide {
-  @media (min-width: $mantine-breakpoint-sm) {
-    padding-inline-end: 0 !important;
+.photoWrap2 {
+  position: absolute;
+  top: rem(60px);
+  left: 22%;
+  width: 60%;
+  height: rem(260px);
+  border-radius: rem(16px);
+  overflow: hidden;
+  transform: rotate(3deg);
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.65);
+  cursor: pointer;
+  z-index: 2;
+  will-change: transform;
+
+  @media (max-width: $mantine-breakpoint-md) {
+    height: rem(200px);
+    top: rem(50px);
+  }
+}
+
+.photoWrap3 {
+  position: absolute;
+  top: rem(180px);
+  right: 0;
+  width: 44%;
+  height: rem(210px);
+  border-radius: rem(16px);
+  overflow: hidden;
+  transform: rotate(7deg);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  z-index: 3;
+  will-change: transform;
+
+  @media (max-width: $mantine-breakpoint-md) {
+    height: rem(170px);
+    top: rem(145px);
   }
 }

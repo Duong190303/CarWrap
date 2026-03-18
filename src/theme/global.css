@@ -3,57 +3,106 @@
 @import "@mantine/notifications/styles.css";
 
 :root {
-	--global--size: clamp(2rem, 4vw, 5rem);
-	--anim--hover-time: 400ms;
-	--anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
-	--linear-ease: linear(
-		0,
-		0.068,
-		0.19 2.7%,
-		0.804 8.1%,
-		1.037,
-		1.199 13.2%,
-		1.245,
-		1.27 15.8%,
-		1.274,
-		1.272 17.4%,
-		1.249 19.1%,
-		0.996 28%,
-		0.949,
-		0.928 33.3%,
-		0.926,
-		0.933 36.8%,
-		1.001 45.6%,
-		1.013,
-		1.019 50.8%,
-		1.018 54.4%,
-		1 63.1%,
-		0.995 68%,
-		1.001 85%,
-		1,
-		--primary: #9d00ff; --secondary: #00e5ff; --accent: #ff00e5;
-			--background: #050510; --card-bg: rgba(20, 20, 40, 0.7) ;
-			--text-primary: #ffffff; --text-secondary: #b8b8ff; --glow-primary:
-			0 0 10px rgba(157, 0, 255, 0.7),
-		0 0 20px rgba(157, 0, 255, 0.5) ; --glow-secondary: 0 0 10px
-			rgba(0, 229, 255, 0.7),
-		0 0 20px rgba(0, 229, 255, 0.5) ; --glow-accent: 0 0 10px
-			rgba(255, 0, 229, 0.7),
-		0 0 20px rgba(255, 0, 229, 0.5) ; --transition-speed: 0.5s;
-	);
+  --global--size: clamp(2rem, 4vw, 5rem);
+  --anim--hover-time: 400ms;
+  --anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
+  --linear-ease: linear(
+    0, 0.068, 0.19 2.7%, 0.804 8.1%, 1.037,
+    1.199 13.2%, 1.245, 1.27 15.8%, 1.274,
+    1.272 17.4%, 1.249 19.1%, 0.996 28%, 0.949,
+    0.928 33.3%, 0.926, 0.933 36.8%, 1.001 45.6%,
+    1.013, 1.019 50.8%, 1.018 54.4%, 1 63.1%,
+    0.995 68%, 1.001 85%, 1
+  );
 
-	@mixin light-root {
-		--text-color: #444444;
-	}
+  /* ── MANTINE OVERRIDE ── */
+  --mantine-color-primary-0: #f0e8ff;
+  --mantine-color-primary-1: #d8c2fd;
+  --mantine-color-primary-2: #be9afb;
+  --mantine-color-primary-3: #a472f8;
+  --mantine-color-primary-4: #8f52f5;
+  --mantine-color-primary-5: #763DF2; /* ← brand primary */
+  --mantine-color-primary-6: #6230d4;
+  --mantine-color-primary-7: #4e25b0;
+  --mantine-color-primary-8: #3a1b8c;
+  --mantine-color-primary-9: #271268;
 
-	@mixin dark-root {
-		--text-color: #fff;
-	}
+  --mantine-color-secondary-0: #e0f2ff;
+  --mantine-color-secondary-1: #b3dcfd;
+  --mantine-color-secondary-2: #80c4fb;
+  --mantine-color-secondary-3: #4dacf8;
+  --mantine-color-secondary-4: #2898f5;
+  --mantine-color-secondary-5: #0583F2; /* ← brand secondary */
+  --mantine-color-secondary-6: #046dd4;
+  --mantine-color-secondary-7: #0358b0;
+  --mantine-color-secondary-8: #02428c;
+  --mantine-color-secondary-9: #012d68;
 
-	--text-white: #fff;
-	--primary-color-gradient: linear-gradient(90deg, #246FB4 0%, #359eff 100%);
+  /* ── BRAND TOKENS ── */
+  --primary:           #763DF2;
+  --primary-light:     #8f52f5;
+  --primary-dark:      #4e25b0;
+
+  --secondary:         #0583F2;
+  --secondary-light:   #2898f5;
+  --secondary-dark:    #0358b0;
+
+  --accent:            #00E5FF;   /* cyan — bổ sung contrast lạnh */
+  --accent-warm:       #FF3CAC;   /* pink — highlight nổi bật */
+  --success:           #00C48C;
+  --warning:           #FFB020;
+  --error:             #FF4D4F;
+
+  /* ── BACKGROUND ── */
+  --background:        #0D0D0F;   /* near black */
+  --background-2:      #13131A;   /* page section */
+  --card-bg:           #1A1A26;   /* card, panel */
+  --card-bg-hover:     #22223A;
+  --border:            rgba(255, 255, 255, 0.08);
+  --border-strong:     rgba(118, 61, 242, 0.35);
+
+  /* ── TEXT ── */
+  --text-primary:      #F0F0F0;
+  --text-secondary:    #8A8AA0;
+  --text-muted:        #55556A;
+  --text-white:        #ffffff;
+
+  /* ── GLOW ── */
+  --glow-primary:   0 0 12px rgba(118, 61, 242, 0.6), 0 0 28px rgba(118, 61, 242, 0.3);
+  --glow-secondary: 0 0 12px rgba(5, 131, 242, 0.6),  0 0 28px rgba(5, 131, 242, 0.3);
+  --glow-accent:    0 0 12px rgba(0, 229, 255, 0.5),  0 0 24px rgba(0, 229, 255, 0.25);
+
+  /* ── GRADIENTS ── */
+  --grad-brand:        linear-gradient(103.24deg, #763DF2 0%, #0583F2 100%);
+  --grad-brand-tri:    linear-gradient(103.24deg, #FF3CAC 0%, #763DF2 50%, #0583F2 100%);
+  --button-primary:    linear-gradient(103.24deg, #763DF2 1.25%, #0583F2 98.23%);
+  --primary-color-gradient: linear-gradient(103.24deg, #763DF2 1.25%, #0583F2 98.23%);
+
+  /* ── MISC ── */
+  --transition-speed:  0.4s;
+  --radius:            10px;
+  --shadow-card:       0 4px 24px rgba(0, 0, 0, 0.45);
+}
+
+[data-mantine-color-scheme='dark'] {
+  --mantine-color-body:        var(--background);
+  --mantine-color-default-bg:  var(--card-bg);
+  --mantine-color-text:        var(--text-primary);
+  --mantine-color-dimmed:      var(--text-secondary);
+  --mantine-color-border:      var(--border);
+}
+
+[data-mantine-color-scheme='light'] {
+  --mantine-color-body:        #F5F5FA;
+  --mantine-color-default-bg:  #ffffff;
+  --mantine-color-text:        #1A1A26;
+  --mantine-color-dimmed:      #6B6B80;
+  --mantine-color-border:      rgba(0, 0, 0, 0.1);
+  --card-bg:                   #ffffff;
+  --text-dark:              #1A1A26;
+  --text-secondary:            #6B6B80;
 }
 
 ::-webkit-scrollbar {
-	display: none;
+  display: none;
 }

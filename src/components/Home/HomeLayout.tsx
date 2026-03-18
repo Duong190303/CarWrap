@@ -25,7 +25,7 @@ export const HomeLayout: React.FC<PropsWithChildren> = ({ children }) => {
 				<Header pinned={pinned} />
 			</AppShell.Header>
 
-			<AppShell.Main p={0} style={{ overflow: "hidden" }}>{children}</AppShell.Main>
+			<AppShell.Main p={0} style={{ overflow: "hidden", background: "var(--background)" }}>{children}</AppShell.Main>
 			<Footer />
 		</AppShell>
 	);

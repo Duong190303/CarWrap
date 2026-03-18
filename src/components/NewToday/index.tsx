@@ -1,154 +1,179 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import {
   Box,
   Container,
-  Group,
-  SimpleGrid,
-  Stack,
   Text,
-  Badge,
-  Card,
   Image,
-  rem,
   Anchor,
   ActionIcon,
+  Badge,
 } from "@mantine/core";
-import { IconShare2 } from "@tabler/icons-react";
+import { IconArrowRight, IconShare2 } from "@tabler/icons-react";
+import { motion, useInView } from "framer-motion";
+import classes from "./NewToday.module.css";
+import { GradientText } from "../UI/GradientText/GradientText";
 
 export type NewsItem = {
   id: string | number;
-  category: string; // e.g. "PPF", "WRAPPING", "HOT NEWS"
-  categoryColor?: string; // Mantine color or any CSS color
+  category: string;
+  categoryColor?: string;
   title: string;
-  date: string; // formatted date text
-  image: string; // img url
-  href?: string; // link to detail
+  date: string;
+  image: string;
+  href?: string;
 };
 
+// ── Variants ─────────────────────────────────────────────────
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.5 } },
+};
+
+const headingVariants = {
+  hidden: { opacity: 0, y: -32 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: -48 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+// ── NewsCard ──────────────────────────────────────────────────
 function NewsCard({ item }: { item: NewsItem }) {
   return (
-    <Card
-      withBorder
-      variant="transparent"
-      radius="lg"
-      p={0}
-      style={{
-        overflow: "hidden",
-        boxShadow: "0 8px 24px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.08)",
-      }}
-    >
-      <Box pos="relative">
-        <Image
-          src={item.image}
-          alt={item.title}
-          h={rem(260)}
-          w="100%"
-          fit="cover"
-        />
-        <Badge
-          size="sm"
-          radius="sm"
-          variant="filled"
-          style={{
-            position: "absolute",
-            left: rem(12),
-            top: rem(12),
-            background: item.categoryColor ?? "#111",
-            fontWeight: 700,
-            letterSpacing: 0.4,
-          }}
-        >
-          {item.category}
-        </Badge>
-      </Box>
+    <motion.div variants={cardVariants} className={classes.cardMotion}>
+      <Box className={classes.card}>
+        {/* ── Image block ── */}
+        <Box className={classes.imgWrap}>
+          <Image
+            src={item.image}
+            alt={item.title}
+            fit="cover"
+            w="100%"
+            h="100%"
+            className={classes.img}
+          />
+          {/* category badge */}
+          <Badge
+            className={classes.badge}
+            style={{
+              background: item.categoryColor ?? "#0ea5e9",
+            }}
+          >
+            {item.category}
+          </Badge>
+        </Box>
 
-      <Stack gap="xs" p="md">
-        <Text size="sm" c="dimmed">
-          {item.date}
-        </Text>
+        {/* ── Content block ── */}
+        <Box className={classes.body}>
+          <Text className={classes.date}>{item.date}</Text>
+          <Text className={classes.title} lineClamp={4}>
+            {item.title}
+          </Text>
 
-        <Group justify="space-between" align="flex-start">
-          {item.href ? (
-            <Anchor
-              href={item.href}
-              underline="never"
-              c="var(--mantine-color-text)"
-            >
-              <Text
-                fw={700}
-                size="lg"
-                lh={1.3}
-                style={{ wordBreak: "break-word" }}
+          {/* footer row */}
+          <Box className={classes.footer}>
+            {item.href ? (
+              <Anchor
+                href={item.href}
+                underline="never"
+                className={classes.readMore}
               >
-                {item.title}
-              </Text>
-            </Anchor>
-          ) : (
-            <Text
-              fw={700}
-              size="lg"
-              lh={1.3}
-              style={{ wordBreak: "break-word" }}
+                <Text component="span" className={classes.readMoreText}>
+                  READ MORE
+                </Text>
+                <IconArrowRight size={14} stroke={2.5} />
+              </Anchor>
+            ) : (
+              <Box />
+            )}
+            <ActionIcon
+              variant="subtle"
+              radius="xl"
+              size="sm"
+              className={classes.shareBtn}
+              aria-label="Share"
             >
-              {item.title}
-            </Text>
-          )}
-
-          <ActionIcon variant="subtle" radius="xl" aria-label="Share">
-            <IconShare2 size={18} />
-          </ActionIcon>
-        </Group>
-      </Stack>
-    </Card>
+              <IconShare2 size={15} />
+            </ActionIcon>
+          </Box>
+        </Box>
+      </Box>
+    </motion.div>
   );
 }
 
-export const NewToday: React.FC<{ items?: NewsItem[]; title?: string }> = ({
+// ── Section ───────────────────────────────────────────────────
+export const NewToday: React.FC<{ items?: NewsItem[] }> = ({
   items = defaultItems,
-  title = "WHAT'S NEW TODAY",
-}: {
-  items?: NewsItem[];
-  title?: string;
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -80px 0px" });
+
   return (
     <Box
       component="section"
-      py="xl"
-      id="new-today"
-      mt={{ base: rem(20), md: rem(40) }}
-      style={{
-        background: "white",
-      }}
+      className={classes.section}
+      id="news"
+      ref={ref}
     >
       <Container size="lg">
-        <Text
-          ta="center"
-          fw={900}
-          fz={{ base: rem(24), md: rem(28), lg: rem(32) }}
-          mb="lg"
-          style={{ letterSpacing: 1, textTransform: "uppercase" }}
+        {/* ── Heading ── */}
+        <motion.div
+          variants={headingVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
         >
-          {title}
-        </Text>
+          <Box className={classes.headingWrap}>
+            <Text component="span" className={classes.heading}>
+              {"WHAT'S "}
+              <GradientText
+                gradient="linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)"
+                animationSpeed={10}
+                fontSize={"clamp(1.5rem, 2vw, 2rem)"}
+                fontWeight={900}
+              >
+                {" NEW TODAY"}
+              </GradientText>
+            </Text>
+            <Box className={classes.headingUnderline} />
+          </Box>
+        </motion.div>
 
-        <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
-          {items.map((it) => (
-            <NewsCard key={it.id} item={it} />
-          ))}
-        </SimpleGrid>
+        {/* ── Cards ── */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          <Box className={classes.grid}>
+            {items.map((it) => (
+              <NewsCard key={it.id} item={it} />
+            ))}
+          </Box>
+        </motion.div>
       </Container>
     </Box>
   );
 };
 
-// --- Demo data (replace with API data) ---
+// --- Demo data ---
 const defaultItems: NewsItem[] = [
   {
     id: 1,
     category: "PPF",
-    categoryColor: "#111",
+    categoryColor: "#0ea5e9",
     title:
       "PPF OPTICSHIELD FILM – PREMIUM CAR PROTECTION PRODUCT AVAILABLE AT WRAPSTYLE VIET...",
     date: "March 2, 2025",
@@ -158,9 +183,9 @@ const defaultItems: NewsItem[] = [
   {
     id: 2,
     category: "WRAPPING",
-    categoryColor: "#FFB703",
+    categoryColor: "#ec4899",
     title:
-      "Close-up of 'SUPER COW' LAMBORGHINI URUS S GOING DOWN THE STREETS WITH BABY BLUE OUTFITS...",
+      "CLOSE-UP OF 'SUPER COW' LAMBORGHINI URUS S GOING DOWN THE STREETS WITH BABY BLUE...",
     date: "October 23, 2024",
     image: "/assets/carousel/img2.jpg",
     href: "#",
@@ -168,8 +193,9 @@ const defaultItems: NewsItem[] = [
   {
     id: 3,
     category: "HOT NEWS",
-    categoryColor: "#F03E3E",
-    title: "WRAPSTYLE 'BEAUTY' FOR PORSCHE CLUB VIETNAM AFTER THE JOURNEY...",
+    categoryColor: "#f43f5e",
+    title:
+      "WRAPSTYLE 'BEAUTY' FOR PORSCHE CLUB VIETNAM AFTER THE JOURNEY EXPLORATION...",
     date: "October 17, 2024",
     image: "/assets/carousel/img3.jpg",
     href: "#",

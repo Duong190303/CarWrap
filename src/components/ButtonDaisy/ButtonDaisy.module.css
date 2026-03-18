@@ -18,9 +18,10 @@
 
 .buttonFiled {
   position: relative;
-  border-color: rgb(190, 188, 188);
+  /* border-color: rgb(190, 188, 188); */
   /* background: linear-gradient(135deg, #9f82ff 0%, #7c5cff 45%, #6b8cff 100%); */
-  background: #1f1f1f;
+  background: linear-gradient(90.24deg, #763DF2 0%, #0583F2 99.06%);
+;
   /* box-shadow: 0 0px 24px rgba(124, 92, 255, 0.25); */
   color: var(--mantine-color-white);
   overflow: hidden;
@@ -41,7 +42,7 @@
     top: 50%;
     left: -30%;
     transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.8);
+    /* background-color: rgba(255, 255, 255, 0.8); */
     /* border-radius: 0 200% 200% 0; */
     transition: all 0.25s;
     z-index: 1;

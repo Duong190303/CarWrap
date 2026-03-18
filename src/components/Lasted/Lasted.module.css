@@ -1,56 +1,179 @@
+.section {
+  background: var(--background);
+}
+
+.headingWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: rem(6px);
+  margin-bottom: rem(48px);
+}
+
+.headingLabel {
+  font-size: rem(11px);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  opacity: 0.85;
+}
+
+.heading {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  line-height: 1;
+  margin: 0;
+  align-items: center;
+  display: flex;
+}
+
+.headingUnderline {
+  width: rem(72px);
+  height: rem(3px);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #389fff 0%, #a855f7 100%);
+  margin-top: rem(4px);
+}
+
+/* ═══════════════════════════════════════════════
+   TILE / THUMB
+═══════════════════════════════════════════════ */
 .thumb {
   position: relative;
   overflow: hidden;
   border-radius: 0;
+  /* subtle separator between tiles */
+  outline: 1px solid rgba(255, 255, 255, 0.04);
+  cursor: pointer;
 }
 
-.thumb img {
-  transition: transform 300ms ease;
+/* image zoom */
+.thumbImg {
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.thumb:hover img {
-  transform: scale(1.05);
+.thumb:hover .thumbImg {
+  transform: scale(1.07) !important;
 }
 
-/* lớp phủ đen mờ */
+/* ── Overlay ── */
 .overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0) 20%,
-    rgba(0, 0, 0, 0.75) 100%
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.15) 35%,
+    rgba(0, 0, 0, 0.82) 100%
   );
   opacity: 0;
-  transition: opacity 200ms ease;
+  transition: opacity 0.3s ease;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  justify-content: space-between;
 }
 
 .thumb:hover .overlay {
   opacity: 1;
 }
 
-/* khối text phía dưới */
-.caption {
+/* ── Action buttons (top-right) ── */
+.actions {
+  align-self: flex-end;
   width: 100%;
-  padding: 14px 16px;
-  color: white;
 }
 
-.title {
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  line-height: 1.1;
+.actionBtn {
+  background: rgba(255, 255, 255, 0.14) !important;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff !important;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.2s ease;
+}
+
+.actionBtn:hover {
+  background: rgba(56, 159, 255, 0.35) !important;
+}
+
+/* stagger the two buttons */
+.actions > *:nth-child(1) .actionBtn {
+  transition-delay: 0.04s;
+}
+.actions > *:nth-child(2) .actionBtn {
+  transition-delay: 0.1s;
+}
+
+.thumb:hover .actionBtn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Caption (bottom) ── */
+.caption {
+  padding: rem(14px) rem(16px) rem(16px);
+  display: flex;
+  flex-direction: column;
+  gap: rem(5px);
+  transform: translateY(10px);
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.thumb:hover .caption {
+  transform: translateY(0);
+}
+
+/* service badge pill */
+.serviceBadge {
+  align-self: flex-start;
+  background: rgba(56, 159, 255, 0.22) !important;
+  color: #7dd3fc !important;
+  border: 1px solid rgba(56, 159, 255, 0.35) !important;
+  font-size: rem(9px) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
   text-transform: uppercase;
-  font-size: 14px;
-  color: aliceblue;
+  padding: rem(2px) rem(8px) !important;
 }
 
-.service {
-  opacity: 0.9;
-  font-size: 12px;
-  margin-top: 2px;
-  color: #d3d3d3;
+/* car name */
+.carName {
+  font-weight: 800;
+  font-size: rem(14px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+/* ── Shine sweep ── */
+.shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0s;
+  pointer-events: none;
+}
+
+.thumb:hover .shine {
+  transform: translateX(100%);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }

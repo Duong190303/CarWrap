@@ -1,0 +1,10 @@
+.Menudropdown {
+  background: #9a99994d;
+  backdrop-filter: blur(10px);
+  border-color: #9a99994d;
+}
+
+.Menulabel[data="active"] {
+  background-color: aqua;
+  color: black;
+}

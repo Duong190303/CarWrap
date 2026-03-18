@@ -12,7 +12,7 @@ export function GalleryButton({ href = "/gallery" }: { href?: string }) {
       size="md"
       radius="md"
       leftSection={<IconPhoto size={18} />}
-      color={"#389fff"}
+      color={"var(--secondary)"}
       fw={700}
     >
       GALLERY

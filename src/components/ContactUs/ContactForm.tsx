@@ -12,8 +12,6 @@ import {
   Text,
   TextInput,
   Textarea,
-  rem,
-  Tooltip,
   Box,
 } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
@@ -23,6 +21,7 @@ import {
   IconMail,
   IconPhone,
   IconUser,
+  IconSend,
 } from "@tabler/icons-react";
 import { BRANDS, DEFAULT_VALUES, SERVICE_OPTIONS } from "./constants";
 import type { BookingFormProps, FormValues } from "./types";
@@ -36,13 +35,12 @@ export const ContactForm: React.FC<BookingFormProps> = ({
     initialValues: { ...DEFAULT_VALUES, ...initial },
     validateInputOnBlur: true,
     validate: {
-      name: (v) => (v.trim().length >= 2 ? null : "Enter a valid name"),
-      phone: (v) =>
-        /^\+?[0-9\s\-()]{8,}$/.test(v) ? null : "Phone number is invalid",
-      email: (v) => (/^\S+@\S+\.\S+$/.test(v) ? null : "Email is invalid"),
-      services: (v) => (v.length > 0 ? null : "Select at least one service"),
-      date: (v) => (v ? null : "Pick a date"),
-      accept: (v) => (v ? null : "You must agree to the terms"),
+      name:     (v) => (v.trim().length >= 2   ? null : "Enter a valid name"),
+      phone:    (v) => (/^\+?[0-9\s\-()]{8,}$/.test(v) ? null : "Phone number is invalid"),
+      email:    (v) => (/^\S+@\S+\.\S+$/.test(v) ? null : "Email is invalid"),
+      services: (v) => (v.length > 0            ? null : "Select at least one service"),
+      date:     (v) => (v                        ? null : "Pick a date"),
+      accept:   (v) => (v                        ? null : "You must agree to the terms"),
     },
   });
 
@@ -52,138 +50,143 @@ export const ContactForm: React.FC<BookingFormProps> = ({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
-
-    if (!res.ok) {
-      alert("Something went wrong. Please try again later.");
-      return;
-    }
-
+    if (!res.ok) { alert("Something went wrong. Please try again later."); return; }
     alert("Your appointment request has been sent!");
     form.reset();
   };
 
   return (
-    <Paper
-      variant="transparent"
-      shadow="xxl"
-      p="lg"
-      radius="md"
-      className={classes.formCard}
-    >
-      <Text
-        fz={{ base: rem(24), md: rem(28), lg: rem(32) }}
-        fw={700}
-        className={classes.formTitle}
-      >
-        BOOK A GARAGE SERVICE
-      </Text>
-      <Box className={classes.stripe} />
+    <Paper radius="xl" p={{ base: "lg", md: "xl" }} className={classes.formCard}>
+
+      {/* ── Form header ── */}
+      <Box className={classes.formHeader}>
+        <Text className={classes.formTitle}>BOOK A GARAGE SERVICE</Text>
+        <Text className={classes.formSubtitle}>
+          Fill in the details below and {"we'll"} get back to you within 24 hours.
+        </Text>
+        <Box className={classes.formHeaderLine} />
+      </Box>
 
       <form onSubmit={form.onSubmit(handleSubmit)}>
         <Grid gutter="md">
-          <GridCol
-            span={{ base: 12, sm: 4 }}
-            style={{ alignItems: "flex-end", display: "flex" }}
-          >
+
+          {/* Salutation */}
+          <GridCol span={{ base: 12, sm: 4 }} style={{ alignItems: "flex-end", display: "flex" }}>
             <Select
               aria-label="Salutation"
               data={["Mr", "Ms", "Mx"]}
+              classNames={{ input: classes.input, label: classes.inputLabel }}
               {...form.getInputProps("salutation")}
             />
           </GridCol>
 
+          {/* Name */}
           <GridCol span={{ base: 12, sm: 8 }}>
             <TextInput
               required
               label="Name"
-              leftSection={<IconUser size={16} />}
+              leftSection={<IconUser size={15} />}
               placeholder="Your name"
+              classNames={{ input: classes.input, label: classes.inputLabel }}
               {...form.getInputProps("name")}
             />
           </GridCol>
 
+          {/* Phone */}
           <GridCol span={{ base: 12, sm: 6 }}>
             <TextInput
               required
               label="Phone"
-              leftSection={<IconPhone size={16} />}
+              leftSection={<IconPhone size={15} />}
               placeholder="+84 ..."
+              classNames={{ input: classes.input, label: classes.inputLabel }}
               {...form.getInputProps("phone")}
             />
           </GridCol>
 
+          {/* Email */}
           <GridCol span={{ base: 12, sm: 6 }}>
             <TextInput
               required
               label="Email"
-              leftSection={<IconMail size={16} />}
+              leftSection={<IconMail size={15} />}
               placeholder="you@email.com"
+              classNames={{ input: classes.input, label: classes.inputLabel }}
               {...form.getInputProps("email")}
             />
           </GridCol>
 
+          {/* Services */}
           <GridCol span={12}>
-            <Text
-              size="xs"
-              fw={600}
-              c="dark.6"
-              mb={6}
-              className={classes.legend}
-            >
-              SERVICES
+            <Text size="xs" fw={700} className={classes.inputLabel} mb={8} style={{ letterSpacing: "0.12em" }}>
+              SERVICES <span style={{ color: "#f43f5e" }}>*</span>
             </Text>
-            <CheckboxGroup {...form.getInputProps("services")} withAsterisk>
-              <Group gap="lg">
+            <CheckboxGroup {...form.getInputProps("services")}>
+              <Group gap="md">
                 {SERVICE_OPTIONS.map((s) => (
                   <Checkbox
                     key={s.value}
                     value={s.value}
                     label={s.label}
-                    color={"#389fff"}
+                    classNames={{
+                      input: classes.checkboxInput,
+                      label: classes.checkboxLabel,
+                    }}
                   />
                 ))}
               </Group>
             </CheckboxGroup>
+            {form.errors.services && (
+              <Text size="xs" c="red" mt={4}>{form.errors.services}</Text>
+            )}
           </GridCol>
 
+          {/* Brand */}
           <GridCol span={{ base: 12, sm: 6 }}>
             <Select
               label="BRAND"
               data={BRANDS}
+              classNames={{ input: classes.input, label: classes.inputLabel }}
               {...form.getInputProps("brand")}
             />
           </GridCol>
 
+          {/* Schedule */}
           <GridCol span={{ base: 12, sm: 6 }}>
-            <Tooltip label="Select your preferred date">
-              <DateInput
-                label="SCHEDULE"
-                placeholder="mm/dd/yyyy"
-                leftSection={<IconCalendar size={16} />}
-                valueFormat="MM/DD/YYYY"
-                {...form.getInputProps("date")}
-              />
-            </Tooltip>
+            <DateInput
+              label="SCHEDULE"
+              placeholder="mm/dd/yyyy"
+              leftSection={<IconCalendar size={15} />}
+              valueFormat="MM/DD/YYYY"
+              classNames={{ input: classes.input, label: classes.inputLabel }}
+              {...form.getInputProps("date")}
+            />
           </GridCol>
 
+          {/* Message */}
           <GridCol span={12}>
             <Textarea
               label="Message"
-              minRows={5}
+              minRows={4}
               autosize
               placeholder="Vehicle details, service notes, preferred time..."
+              classNames={{ input: classes.input, label: classes.inputLabel }}
               {...form.getInputProps("message")}
             />
           </GridCol>
 
+          {/* Accept */}
           <GridCol span={12}>
             <Checkbox
-              color={"#389fff"}
+              classNames={{
+                input: classes.checkboxInput,
+                label: classes.checkboxLabel,
+              }}
               label={
-                <Text size="xs">
+                <Text size="xs" c="rgba(255,255,255,0.55)">
                   I have read the{" "}
-                  <Text span fw={600} className={classes.link}>
-                    “General Terms Of Use”
+                  <Text span fw={700} className={classes.link}>
+                    General Terms Of Use
                   </Text>{" "}
                   and agree to it
                 </Text>
@@ -192,16 +195,20 @@ export const ContactForm: React.FC<BookingFormProps> = ({
             />
           </GridCol>
 
+          {/* Submit */}
           <GridCol span={12}>
             <Button
               type="submit"
-              radius="sm"
               size="md"
+              radius="md"
+              fullWidth
+              rightSection={<IconSend size={16} />}
               className={classes.submit}
             >
               BOOK APPOINTMENT
             </Button>
           </GridCol>
+
         </Grid>
       </form>
     </Paper>

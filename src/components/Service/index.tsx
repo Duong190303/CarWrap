@@ -6,12 +6,12 @@ export const Service: React.FC = () => {
   return (
     <Box
       component="section"
-      pt={{ base: 0, sm: 50, md: 30 }}
-      pb={{ base: 0, sm: 50, md: 30 }}
+      pt={{ base: 0, sm: 50, md: 40 }}
+      pb={{ base: 0, sm: 50, md: 40 }}
       id="services"
       bg={"var(--mantine-color-dark-8)"}
     >
-      <Container size="xl" py={20}>
+      <Container size="xl" >
         <ServiceList />
       </Container>
     </Box>

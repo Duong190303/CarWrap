@@ -1,21 +1,12 @@
 import {
   Box,
-  Container,
-  Flex,
   Group,
   Image,
-  Text,
   UnstyledButton,
-  useMantineTheme,
-  Divider,
   Paper,
+  Container,
 } from "@mantine/core";
-import {
-  IconMapPin,
-  IconPhoneRinging,
-  IconClock,
-  IconHeadphones,
-} from "@tabler/icons-react";
+import { IconPhoneRinging, IconFilePhone } from "@tabler/icons-react";
 import classes from "./Header.module.css";
 import Link from "next/link";
 import { ButtonDaisy } from "../ButtonDaisy";
@@ -25,6 +16,7 @@ import { DrawerNav } from "./Drawer/DrawerNav";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { NavItem } from "./Navbar/NavbarItem";
+import { Hero } from "./Hero";
 type NavigationType = {
   id: string | number;
   label: string;
@@ -48,41 +40,20 @@ export const DEFAULT_NAVIGATION_ITEMS: NavigationType[] = [
       { id: "2a", label: "Car Wrapping", href: "/#service" },
       {
         id: "2b",
-        label: "Paint Protection",
+        label: "Car Washing",
         href: "/#service",
       },
-      { id: "2c", label: "Detailing", href: "/#service" },
-      { id: "2d", label: "Bodykit Installing", href: "/#service" },
+      { id: "2c", label: " Car Repair", href: "/#service" },
     ],
-  },
-  {
-    id: 3,
-    label: "News",
-    href: "/#newtoday",
-  },
-  {
-    id: 4,
-    label: "Suppliers",
-    href: "/#suppliers",
-  },
-  {
-    id: 5,
-    label: "About Us",
-    href: "/#about_us",
-  },
-  {
-    id: 6,
-    label: "Contact Us",
-    href: "/#contact_us",
   },
 ];
 
 export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
   const headerVariants = {
     hidden: { y: -80, x: "-50%", opacity: 0 },
-    visible: { y: 5, x: "-50%", opacity: 1 },
+    visible: { y: 0, x: "-50%", opacity: 1 },
   };
-  const theme = useMantineTheme();
+  // const theme = useMantineTheme();
   const pathname = usePathname();
 
   // Hash hiện tại
@@ -101,81 +72,30 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
   }, [pathname, currentHash]);
 
   return (
-    <>
-      <Container size="xl" mx="auto" visibleFrom="md" bg={"#0F172A"}>
-        <Flex gap={10} align="center" justify="space-between" w="100%" h={60}>
-          <Group gap="xs" wrap="nowrap">
-            <IconMapPin size={18} color={theme.colors.cyan[6]} />
-            <Text fz="sm" fw={500} c="#ffffff">
-              38A Nguyen Quy Duc, An Phu Ward, City. Thu Duc, City. HCM{" "}
-            </Text>
-          </Group>
-
-          <Divider
-            orientation="vertical"
-            styles={{ root: { borderInlineStart: "1px solid #666" } }}
-          />
-
-          <Group gap="xs" wrap="nowrap">
-            <IconClock size={18} color={theme.colors.cyan[6]} />
-            <Text fz="sm" fw={500} c="#ffffff">
-              Monday - Saturday / 08:30 AM - 06:00 PM
-            </Text>
-          </Group>
-
-          <Divider
-            orientation="vertical"
-            styles={{ root: { borderInlineStart: "1px solid #666" } }}
-          />
-
-          <Group gap="xs" wrap="nowrap">
-            <IconHeadphones size={18} color={theme.colors.cyan[6]} />
-            <Text fz="sm" fw={500} c="#ffffff">
-              Consulting: (+84) 933 622 225
-            </Text>
-          </Group>
-
-          <Divider
-            orientation="vertical"
-            styles={{ root: { borderInlineStart: "1px solid #666" } }}
-          />
-
-          <ButtonDaisy
-            type="primary"
-            size="sm"
-            radius={5}
-            w={100}
-            iconLeft={<Image src="/booking_icon.png" alt="booking" w={20} />}
-            iconRight={<IconPhoneRinging size={20} />}
-            fz={14}
-          >
-            Booking
-          </ButtonDaisy>
-        </Flex>
-      </Container>
-
+    <Container size="xl" className={classes.header}>
       <motion.div
         className={clsx(classes.headerBottom, { [classes.pinned]: pinned })}
         initial="hidden"
         animate="visible"
         exit="hidden"
         variants={headerVariants}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
+        // transition={{ duration: 0.6, ease: "easeInOut" }}
       >
         <Group
           classNames={{ root: classes.headerBottomContent }}
           w="100%"
-          h={{ base: 60, md: 80 }}
+          h={{ base: 60, md: 70 }}
           px={{ base: 5, sm: 20 }}
         >
           <Group flex={1} h="100%">
             <UnstyledButton component={Link} href="#">
               <Image
-                src="/LogoCW_nobg.png"
+                src="/LogoCarWrap.jpg"
                 alt="logo"
                 fit="contain"
                 h="100%"
-                w={{ base: 80, md: 85 }}
+                w={{ base: 40, md: 40 }}
+                radius={100}
               />
             </UnstyledButton>
           </Group>
@@ -186,9 +106,20 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
               size="sm"
               radius="sm"
               w={100}
-              iconLeft={<Image src="/booking_icon.png" alt="booking" w={20} />}
+              iconLeft={<IconFilePhone stroke={1.5} size={24} />}
               iconRight={<IconPhoneRinging size={20} />}
               fz={14}
+              style={{
+                background: "var(--button-primary)",
+                border: "none",
+                borderRadius: "4px",
+                color: "#fff",
+                fontWeight: 700,
+                cursor: "pointer",
+                letterSpacing: "0.5px",
+                boxShadow: "var(--glow-primary)",
+                transition: "opacity var(--transition-speed)",
+              }}
             >
               Booking
             </ButtonDaisy>
@@ -213,8 +144,33 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
           </Paper>
 
           <DrawerNav items={DEFAULT_NAVIGATION_ITEMS} />
+          <Box visibleFrom="md">
+            <ButtonDaisy
+              type="primary"
+              size="sm"
+              radius="sm"
+              w={100}
+              iconLeft={<IconFilePhone stroke={1.5} size={24} />}
+              iconRight={<IconPhoneRinging size={20} />}
+              fz={14}
+              style={{
+                background: "var(--button-primary)",
+                border: "none",
+                borderRadius: "4px",
+                color: "#fff",
+                fontWeight: 700,
+                cursor: "pointer",
+                letterSpacing: "0.5px",
+                boxShadow: "var(--glow-primary)",
+                transition: "opacity var(--transition-speed)",
+              }}
+            >
+              Booking
+            </ButtonDaisy>
+          </Box>
         </Group>
       </motion.div>
-    </>
+      <Hero />
+    </Container>
   );
 };

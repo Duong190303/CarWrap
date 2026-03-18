@@ -81,9 +81,10 @@ export const DrawerNav: React.FC<NavProps> = ({ items }) => {
         hiddenFrom="md"
       >
         <Drawer.Overlay />
-        <Drawer.Content>
+        <Drawer.Content className={classes.drawerContent}>
           <Drawer.Header
-            style={{ borderBottom: "1px solid #246FB4", padding: 10 }}
+            style={{ borderBottom: "1px solid var(--text-primary)", padding: 10 }}
+            className={classes.drawerHeader}
           >
             <UnstyledButton
               component={Link}
@@ -91,14 +92,15 @@ export const DrawerNav: React.FC<NavProps> = ({ items }) => {
               onClick={handleCloseAfterClick}
             >
               <Image
-                src="/LogoCW_des.svg"
+                src="/LogoCarWrap.jpg"
                 alt="logo"
                 fit="contain"
                 h="100%"
-                w={{ base: 100, md: 200 }}
+                w={30}
+                radius={30}
               />
             </UnstyledButton>
-            <Drawer.CloseButton c="#246FB4" size={40} />
+            <Drawer.CloseButton c={"var(--text-primary)"} size={40} />
           </Drawer.Header>
 
           <Drawer.Body
@@ -138,6 +140,7 @@ export const DrawerNav: React.FC<NavProps> = ({ items }) => {
                         }}
                       >
                         <Text
+                          c={"var(--text-primary)"}
                           fz={16}
                           tt="uppercase"
                           fw={500}
@@ -180,6 +183,7 @@ export const DrawerNav: React.FC<NavProps> = ({ items }) => {
                             tt="uppercase"
                             className={classes.DrawerParentText}
                             style={{ letterSpacing: 0.6 }}
+                            c={"var(--text-primary)"}
                           >
                             {item.label}
                           </Text>
@@ -187,7 +191,7 @@ export const DrawerNav: React.FC<NavProps> = ({ items }) => {
                         rightSection={
                           <IconChevronDown
                             size={18}
-                            color="black"
+                            color={"var(--text-primary)"}
                             style={{
                               transition: "transform .2s ease",
                               transform: openedParent
@@ -223,6 +227,7 @@ export const DrawerNav: React.FC<NavProps> = ({ items }) => {
                                   classNames={{ root: classes.Textchild }}
                                   tt="uppercase"
                                   fw={500}
+                                  c={"var(--text-primary)"}
                                 >
                                   {child.label}
                                 </Text>
@@ -245,7 +250,7 @@ export const DrawerNav: React.FC<NavProps> = ({ items }) => {
         onClick={open}
         aria-label="Open navigation menu"
       >
-        <IconMenu2 stroke={2} color="#246FB4" />
+        <IconMenu2 stroke={2} color="var(--secondary)" />
       </ThemeIcon>
     </Box>
   );

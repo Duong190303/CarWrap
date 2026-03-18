@@ -1,5 +1,5 @@
 .customButton {
-  border: 3px solid #246FB4;
+  border: 3px solid var(--secondary);
   border-radius: 8px;
   background-color: transparent;
   position: relative;
@@ -15,7 +15,7 @@
 }
 
 .customButton:hover {
-  background-color: #246FB4;
+  background-color: var(--secondary);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(246, 102, 174, 0.3);
 }
@@ -49,7 +49,7 @@
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
-  color: #246FB4;
+  color: var(--secondary);
   transition: color 0.3s ease;
   letter-spacing: 0.5px;
 }

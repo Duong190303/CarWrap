@@ -1,5 +1,21 @@
-.Slide{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.Slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoImg {
+  opacity: 0.55;
+  filter: grayscale(100%) brightness(1.4);
+  transition:
+    opacity 0.3s ease,
+    filter 0.3s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.logoImg:hover {
+  opacity: 1;
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.08);
 }

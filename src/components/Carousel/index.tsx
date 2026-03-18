@@ -21,7 +21,7 @@ export const Carousel: React.FC = () => {
         left={"5%"}
         style={{ zIndex: 10 }}
       >
-        <Text fz={48} c={"#246FB4"} fw={700}>
+        <Text fz={48} c={"var(--secondary)"} fw={700}>
           BEAUTY
         </Text>
         <Text w={260} fz={40} c={"#FFFFFF"} fw={700}>

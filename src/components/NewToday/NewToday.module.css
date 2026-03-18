@@ -1,139 +1,227 @@
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.shinyText {
-  font-size: 15px;
-  font-weight: 400 !important;
-  color: #625e5ea4 !important;
+.section {
+  background: var(--background);
+  padding: rem(100px) 0 rem(100px);
+  overflow: hidden;
 
   @media (max-width: $mantine-breakpoint-xs) {
-    color: #f0f0f0 !important;
-    width: rem(350px);
-  }
-
-  @media (mim-width: $mantine-breakpoint-sm) {
-    color: #625e5ea4 !important;
+    padding: rem(80px) 0 rem(80px);
   }
 }
 
-.skilledGroup {
-  transition: transform 0.3s ease-in-out;
+/* ═══════════════════════════════════════════════
+   HEADING
+═══════════════════════════════════════════════ */
+.headingWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: rem(52px);
+}
 
-  @media (min-width: $mantine-breakpoint-sm) {
-    align-items: flex-start;
+.heading {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-align: center;
+  margin: 0 0 rem(14px);
+  text-transform: uppercase;
+  color: var(--text-primary);
+  display: flex;
+  gap: rem(8);
+}
+
+/* three colour spans */
+.hCyan {
+  color: var(--secondary);
+} /* cyan-400  */
+.hPurple {
+  color: var(--primary);
+} /* purple-500 */
+
+/* short gradient underline centered */
+.headingUnderline {
+  width: rem(160px);
+  height: rem(3px);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #a855f7 0%, #22d3ee 100%);
+}
+
+/* ═══════════════════════════════════════════════
+   GRID
+═══════════════════════════════════════════════ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: rem(22px);
+
+  @media (max-width: $mantine-breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (min-width: $mantine-breakpoint-md) {
-    align-items: center;
-  }
-
-  .skilledBox {
-    position: absolute;
-    top: -22px;
-    left: 35px;
-    width: 200px;
-    height: 150px;
-    transition: transform 0.35s ease-in-out;
-  }
-
-  .skilledImage {
-    transition: transform 0.35s ease-in-out;
-    transition-delay: 0.55s;
-  }
-
-  .skilledCircle {
-    position: absolute;
-    bottom: -35px;
-    right: 20px;
-    transition: transform 0.35s ease-in-out;
-    transition-delay: 0.25s;
-    animation: rotate 10s linear infinite;
-    transform-origin: center; /* Đảm bảo vòng tròn quay từ giữa */
-
-    @media (max-width: $mantine-breakpoint-xs) {
-      bottom: -50px;
-      left: -70px;
-    }
-
-    @media (min-width: $mantine-breakpoint-sm) {
-      bottom: 70px;
-      right: -70px;
-    }
-
-    @media (min-width: $mantine-breakpoint-md) {
-      bottom: -50px;
-    }
-
-    @media (min-width: $mantine-breakpoint-xl) {
-      bottom: -50px;
-      right: 0px;
-    }
-  }
-
-  .skilledCircle1 {
-    position: absolute;
-    transition: transform 0.35s ease-in-out;
-    transition-delay: 0.25s;
-    animation: rotate 10s linear infinite;
-    transform-origin: center; /* Đảm bảo vòng tròn quay từ giữa */
-
-    @media (max-width: $mantine-breakpoint-xs) {
-      top: -90px;
-      right: -70px;
-    }
-  }
-
-  &:hover {
-    .skilledBox {
-      transform: scale(1.15);
-      transform-origin: center;
-    }
-
-    .skilledImage {
-      transform: scale(1.03);
-      transform-origin: center;
-    }
-
-    .skilledCircle {
-      transform: scale(1.15) rotate(360deg); /* Kết hợp scale và rotate khi hover */
-      transform-origin: center;
-    }
+  @media (max-width: $mantine-breakpoint-sm) {
+    grid-template-columns: 1fr;
   }
 }
 
-.container {
-  background-position: center;
-  background-repeat: no-repeat;
+/* ═══════════════════════════════════════════════
+   CARD WRAPPER (motion div)
+═══════════════════════════════════════════════ */
+.cardMotion {
+  height: 100%;
+  /* promote wrapper lên GPU layer — tránh stacking context mới trên card */
+  will-change: transform;
+}
 
-  @media (max-width: $mantine-breakpoint-xs) {
-    width: 100%;
-    background-image: url("/assets/skilled/img_skilled_mobile.svg");
-    height: rem(708px);
-    position: relative;
-    padding-inline: 0 !important;
-    margin-inline: 0 !important ;
+/* ═══════════════════════════════════════════════
+   CARD
+═══════════════════════════════════════════════ */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: rem(14px);
+  overflow: hidden;
+  background: #13131f;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+
+  /* chỉ animate transform — rẻ nhất, GPU handle */
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* box-shadow tĩnh luôn có — không transition để tránh repaint */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  /* thêm outline thay cho border-color transition — không trigger layout */
+  outline: 1px solid rgba(34, 211, 238, 0.28);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ─── Image block ─────────────────────────────── */
+.imgWrap {
+  position: relative;
+  height: rem(230px);
+  overflow: hidden;
+  flex-shrink: 0;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    height: rem(200px);
   }
 }
 
-.FlexRoot {
-  @media (max-width: $mantine-breakpoint-xs) {
-    bottom: 5%;
-    left: 10%;
-  }
+.img {
+  position: absolute !important;
+  inset: 0;
+  /* promote image lên composite layer riêng */
+  will-change: transform;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
-  @media (max-width: rem(375px)) {
-    bottom: 5%;
-    left: 5%;
-  }
+.card:hover .img {
+  /* scale nhỏ hơn = ít pixel phải vẽ lại hơn */
+  transform: scale(1.03);
+}
 
-    @media (max-width: rem(370px)) {
-    bottom: 5%;
-    left: 4%;
-  }
+.badge {
+  position: absolute !important;
+  top: rem(12px);
+  left: rem(12px);
+  z-index: 2;
+  font-size: rem(10px);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: rem(4px) rem(10px);
+  border-radius: rem(6px);
+  color: #fff !important;
+  border: none !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  /* bỏ transition badge — không đủ impactful, tốn repaint */
+}
+
+/* .card:hover .badge — removed */
+
+/* ─── Content block ───────────────────────────── */
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: rem(18px) rem(18px) rem(16px);
+  gap: rem(10px);
+  background: #13131f;
+}
+
+.date {
+  font-size: rem(12px);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.38);
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: rem(14px);
+  font-weight: 800;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: #e2e8f0;
+  text-transform: uppercase;
+  flex: 1;
+  transition: color 0.22s ease;
+}
+
+.card:hover .title {
+  color: #ffffff;
+}
+
+/* ─── Footer row ──────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: rem(6px);
+  padding-top: rem(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* READ MORE → */
+.readMore {
+  display: flex;
+  align-items: center;
+  gap: rem(6px);
+  color: #22d3ee !important; /* cyan by default */
+  transition:
+    gap 0.25s ease,
+    color 0.22s ease;
+}
+
+/* 2nd card pink, 3rd card pink-red — match screenshot badge colors */
+.card:nth-child(2) .readMore {
+  color: #ec4899 !important;
+}
+.card:nth-child(3) .readMore {
+  color: #f43f5e !important;
+}
+
+.card:hover .readMore {
+  gap: rem(10px);
+}
+
+.readMoreText {
+  font-size: rem(11.5px);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* share icon */
+.shareBtn {
+  color: rgba(255, 255, 255, 0.3) !important;
+  transition: color 0.2s ease;
+}
+
+.card:hover .shareBtn {
+  color: rgba(255, 255, 255, 0.65) !important;
 }

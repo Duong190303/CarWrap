@@ -1,116 +1,303 @@
 .section {
-  --overlay: rgba(255, 255, 255, 0.55);
   position: relative;
-  padding: clamp(28px, 5vw, 52px) 0;
-  /* background: linear-gradient(var(--overlay), var(--overlay)),
-    center/cover no-repeat; */
+  padding: clamp(64px, 8vw, 100px) 0;
+  overflow: hidden;
+  background: var(--background);
 }
 
+/* ── Background image ── */
+.bgImage {
+  position: absolute;
+  inset: 0;
+  background-image: url('/logobrand/supplierimage.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(0px) brightness(0.55) saturate(0.8);
+  transform: scale(1.04); /* hide blur edge */
+  z-index: 0;
+}
+
+/* ── Dark gradient overlay ── */
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 12, 16, 0.62) 0%,
+    rgba(10, 12, 16, 0.45) 50%,
+    rgba(10, 12, 16, 0.65) 100%
+  );
+  z-index: 1;
+}
+
+/* ── Decorative glow orbs ── */
+.orbLeft {
+  position: absolute;
+  top: -10%;
+  left: -8%;
+  width: clamp(280px, 35vw, 480px);
+  height: clamp(280px, 35vw, 480px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 159, 255, 0.12) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.orbRight {
+  position: absolute;
+  bottom: -15%;
+  right: -8%;
+  width: clamp(240px, 30vw, 420px);
+  height: clamp(240px, 30vw, 420px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════
+   LEFT PANE
+═══════════════════════════════════════════════ */
 .leftWrap {
   padding-top: clamp(8px, 2vw, 24px);
 }
 
-.slogan {
-  display: grid;
-  gap: 6px;
-  line-height: 0.95;
-  letter-spacing: 0.02em;
-  user-select: none;
-
-  @media (max-width: $mantine-breakpoint-sm) {
-    /* display: flex; */
-  }
+/* eyebrow label */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(8px);
+  font-size: rem(10px);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color:  var(--secondary);
+  margin-bottom: rem(20px);
 }
 
-.line1,
-.line2,
-.line3,
-.line4 {
+.eyebrowDot {
+  width: rem(6px);
+  height: rem(6px);
+  border-radius: 50%;
+  background: var(--secondary);
+  box-shadow: 0 0 8px  var(--secondary);
+  flex-shrink: 0;
+}
+
+/* slogan block */
+.slogan {
+  display: flex;
+  flex-direction: column;
+  gap: rem(2px);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  user-select: none;
+  margin-bottom: rem(24px);
+}
+
+/* each line has clip so text wipes upward */
+.lineWrap {
+  overflow: hidden;
+}
+
+.sloganLine {
   font-weight: 900;
   font-family: var(--mantine-font-family);
   text-transform: uppercase;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  display: block;
 }
 
-.line1 {
-  font-size: clamp(28px, 5.2vw, 64px);
-  color: #2b2f3a;
-}
-.line2 {
-  font-size: clamp(32px, 6vw, 72px);
-  color: #2b2f3a;
-}
-.line3,
-.line4 {
-  font-size: clamp(32px, 6vw, 72px);
-  color: #389fff;
+.lineDark {
+  color: var(--text-primary);
 }
 
-.flagRow {
-  margin-top: 16px;
+.lineAccent {
+  color: var(--secondary);
+  /* subtle text shadow glow */
+  text-shadow: 0 0 40px rgba(56, 159, 255, 0.35);
 }
 
-.flagIcon {
-  width: 16px;
-  height: 16px;
-  background: repeating-linear-gradient(-45deg, #222 0 6px, #fff 6px 12px);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
+/* divider */
+.leftDivider {
+  width: rem(56px);
+  height: rem(3px);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #389fff 0%, #a855f7 100%);
+  margin-bottom: rem(20px);
 }
 
+/* description */
+.leftDesc {
+  font-size: rem(14px);
+  line-height: 1.7;
+  color: var(--text-primary);
+  max-width: 380px;
+}
+
+/* hotline link */
+.hotlineLink {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(10px);
+  margin-top: rem(4px);
+  text-decoration: none !important;
+  width: fit-content;
+  transition: gap 0.25s ease;
+}
+
+.hotlineLink:hover {
+  gap: rem(14px);
+}
+
+.hotlineIcon {
+  width: rem(34px);
+  height: rem(34px);
+  border-radius: 50%;
+  background: rgba(56, 159, 255, 0.15);
+  border: 1px solid rgba(56, 159, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary);
+  flex-shrink: 0;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hotlineLink:hover .hotlineIcon {
+  background: rgba(56, 159, 255, 0.25);
+  box-shadow: 0 0 16px rgba(56, 159, 255, 0.3);
+}
+
+.hotlineText {
+  font-size: rem(18px);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.hotlineArrow {
+  color: var(--text-secondary);
+  transition: color 0.2s ease, transform 0.25s ease;
+}
+
+.hotlineLink:hover .hotlineArrow {
+  color: var(--secondary);
+  transform: translateX(3px);
+}
+
+/* ═══════════════════════════════════════════════
+   FORM CARD — glassmorphism
+═══════════════════════════════════════════════ */
 .formCard {
-  background: rgb(11 11 11 / 0%);
-  backdrop-filter: blur(-4px);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(15, 18, 28, 0.75) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow:
+    0 0 0 1px rgba(56, 159, 255, 0.06),
+    0 32px 64px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* ── Form header ── */
+.formHeader {
+  margin-bottom: rem(24px);
 }
 
 .formTitle {
+  font-size: clamp(rem(18px), 2.5vw, rem(26px));
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
   text-align: center;
-  letter-spacing: 0.06em;
-  margin-bottom: 6px;
-  color: #2b2f3a;
 }
 
-.stripe {
-  height: 10px;
-  margin: 8px auto 18px;
-  width: min(520px, 90%);
-  background: repeating-linear-gradient(
-    -60deg,
-    #2b2f3a 0 10px,
-    transparent 10px 20px
-  );
-  clip-path: polygon(0 0, 100% 0, 97% 100%, 0 100%);
-  opacity: 0.8;
+.formSubtitle {
+  font-size: rem(12px);
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: rem(6px);
 }
 
-.legend {
-  letter-spacing: 0.15em;
+.formHeaderLine {
+  width: rem(48px);
+  height: rem(2px);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #389fff, #a855f7);
+  margin: rem(14px) auto 0;
 }
 
+/* ── Inputs ── */
+.inputLabel {
+  font-size: rem(10px) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--text-secondary) !important;
+  margin-bottom: rem(5px) !important;
+}
+
+.input {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--text-primary) !important;
+  transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease !important;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.input:focus,
+.input:focus-within {
+  border-color: rgba(56, 159, 255, 0.5) !important;
+  background: rgba(56, 159, 255, 0.05) !important;
+  box-shadow: 0 0 0 2px rgba(56, 159, 255, 0.12) !important;
+}
+
+/* ── Checkboxes ── */
+.checkboxInput {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  cursor: pointer;
+}
+
+.checkboxInput:checked {
+  background: var(--secondary) !important;
+  border-color: var(--secondary) !important;
+}
+
+.checkboxLabel {
+  color: var(--text-secondary) !important;
+  font-size: rem(12px) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  cursor: pointer;
+}
+
+/* ── Terms link ── */
 .link {
-  color: #2b2f3a;
+  color: var(--secondary);
   text-decoration: none;
 }
 
+/* ── Submit button ── */
 .submit {
-  width: 100%;
-  background: #2b2f3a;
+  background: var(--button-primary) !important;
+  border: none !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1em !important;
+  box-shadow: 0 4px 4px rgba(56, 159, 255, 0.3) !important;
+  transition: box-shadow 0.3s ease, transform 0.25s ease !important;
 }
+
 .submit:hover {
-  background: #1e222b;
+  box-shadow: 0 8px 8px rgba(56, 159, 255, 0.5) !important;
+  transform: translateY(-2px) !important;
 }
 
-.sloganItem {
-  @media (max-width: $mantine-breakpoint-sm) {
-    display: flex;
-    gap: 10px;
-  }
-
-  @media (min-width: $mantine-breakpoint-md) {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: center;
-  }
-
+.submit:active {
+  transform: translateY(0) !important;
 }

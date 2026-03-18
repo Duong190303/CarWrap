@@ -1,72 +1,166 @@
-.serviceCardCol {
+.section {
   @media (max-width: $mantine-breakpoint-xs) {
-    background: linear-gradient(180deg, #fff 0%, #246FB4 100%);
+    padding: rem(50px) 0 rem(50px);
   }
-  &:last-child {
-    .serviceCard {
-      &::after {
-        display: none;
-      }
-    }
-  }
-}
-
-.serviceCard {
-  position: relative;
-
-  @media (min-width: $mantine-breakpoint-lg) {
-    &::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 0.5px;
-      height: 70%;
-      background-color: var(--mantine-color-main-0);
-      z-index: 1;
-    }
-  }
-}
-
-.slide {
-  border: 1px solid #246FB4;
-  height: rem(350px);
-  width: rem(324px);
-  border-radius: 20px;
-  padding: 0 10px;
-  gap: 50px;
-  display: flex;
-}
-
-.controls {
-  width: 113%;
-  left: -7%;
-}
-
-.control {
-  background-color: #ffffff;
-  box-shadow: none;
-  color: #246FB4;
-}
-
-.serviceGridInner {
-  justify-content: space-evenly;
-
   @media (min-width: $mantine-breakpoint-md) {
-    column-gap: 0px;
-    row-gap: 40px;
-  }
-
-  @media (max-width: $mantine-breakpoint-sm) {
-    column-gap: 20px;
-    row-gap: 40px;
+    padding: rem(80px) 0 rem(80px);
   }
 }
 
-.root {
-  &[data-inactive] {
-    opacity: 0;
-    cursor: default;
+.tileMotion {
+  height: 100%;
+}
+
+/* ═══════════════════════════════════════════════
+   TILE CARD
+   — single transition block, all props same curve
+═══════════════════════════════════════════════ */
+.tile {
+  position: relative;
+  border-radius: rem(14px);
+  overflow: hidden;
+  height: rem(420px);
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  /* one easing for everything — no mixed curves = no lag feeling */
+  transition:
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+
+  @media (max-width: $mantine-breakpoint-md) {
+    height: rem(360px);
   }
+}
+
+.tile:hover {
+  transform: translateY(-5px);
+  border-color: rgba(168, 85, 247, 0.45);
+  box-shadow:
+    0 0 0 1.5px rgba(168, 85, 247, 0.5),
+    0 0 0 3px rgba(56, 159, 255, 0.2),
+    0 10px 32px rgba(168, 85, 247, 0.2),
+    0 20px 48px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Full-cover image ── */
+.tileImg {
+  position: absolute !important;
+  inset: 0;
+  /* image zoom subtle + snappy — not too slow */
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tile:hover .tileImg {
+  transform: scale(1.04);
+}
+
+/* ── Dark overlay ── */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 20, 0.1) 0%,
+    rgba(10, 10, 20, 0.52) 42%,
+    rgba(10, 10, 20, 0.9) 100%
+  );
+  z-index: 1;
+  transition: opacity 0.22s ease;
+}
+
+.tile:hover .overlay {
+  opacity: 0.95;
+}
+
+.iconBadge {
+  position: absolute !important;
+  top: rem(14px);
+  right: rem(14px);
+  z-index: 3;
+
+  /* ── Glass core ── */
+  background: rgba(110, 107, 107, 0.5) !important;
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+
+  /* ── Layered inset border: sáng trên-trái, tối dưới-phải ── */
+  border: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    /* inset 0 -1px 0 rgba(0, 0, 0, 0.25), */ inset 1px 0 0
+      rgba(255, 255, 255, 0.15),
+    /* 0 4px 20px rgba(0, 0, 0, 0.35), */ 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  transition:
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.22s ease,
+    background 0.22s ease;
+}
+
+.tile:hover .iconBadge {
+  transform: scale(1.1) rotate(-4deg);
+  /* background: linear-gradient(
+    103.24deg,
+    #ff3cac 0%,
+    #763df2 50%,
+    #0583f2 100%
+  ) !important; */
+  backdrop-filter: blur(40px) saturate(2);
+  -webkit-backdrop-filter: blur(40px) saturate(2);
+  /* box-shadow:
+    0 0 0 1.5px rgba(168, 85, 247, 0.5),
+    0 0 0 3px rgba(56, 159, 255, 0.2),
+    0 10px 32px rgba(168, 85, 247, 0.2); */
+}
+
+/* ── Bottom content ── */
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: rem(22px) rem(22px) rem(18px);
+  display: flex;
+  flex-direction: column;
+  gap: rem(10px);
+}
+
+.tileTitle {
+  font-size: rem(22px);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.15;
+  /* title không cần transition — luôn trắng */
+}
+
+.tileDesc {
+  font-size: rem(13.5px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.68);
+  transition: color 0.2s ease;
+}
+
+.tile:hover .tileDesc {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* ── Bottom glow line ── */
+.bottomLine {
+  height: rem(3px);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #a855f7 0%, #389fff 50%, #22d3ee 100%);
+  width: 0;
+  margin-top: rem(2px);
+  /* dùng ease-out thay vì spring — grow tức thì, không lag */
+  transition: width 0.25s ease-out;
+}
+
+.tile:hover .bottomLine {
+  width: 100%;
 }
