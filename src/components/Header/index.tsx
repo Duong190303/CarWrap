@@ -37,13 +37,13 @@ export const DEFAULT_NAVIGATION_ITEMS: NavigationType[] = [
     label: "Services",
     href: "/#",
     children: [
-      { id: "2a", label: "Car Wrapping", href: "/#service" },
+      { id: "2a", label: "Car Wrapping", href: "/#services" },
       {
         id: "2b",
         label: "Car Washing",
-        href: "/#service",
+        href: "/#services",
       },
-      { id: "2c", label: " Car Repair", href: "/#service" },
+      { id: "2c", label: " Car Repair", href: "/#services" },
     ],
   },
 ];
@@ -106,6 +106,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
               size="sm"
               radius="sm"
               w={100}
+              href="/#contactus"
               iconLeft={<IconFilePhone stroke={1.5} size={24} />}
               iconRight={<IconPhoneRinging size={20} />}
               fz={14}
@@ -113,7 +114,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
                 background: "var(--button-primary)",
                 border: "none",
                 borderRadius: "4px",
-                color: "#fff",
+                color: "var(--text-primary)",
                 fontWeight: 700,
                 cursor: "pointer",
                 letterSpacing: "0.5px",
@@ -149,6 +150,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
               type="primary"
               size="sm"
               radius="sm"
+              href="/#contactus"
               w={100}
               iconLeft={<IconFilePhone stroke={1.5} size={24} />}
               iconRight={<IconPhoneRinging size={20} />}
@@ -157,7 +159,7 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
                 background: "var(--button-primary)",
                 border: "none",
                 borderRadius: "4px",
-                color: "#fff",
+                color: "var(--text-primary)",
                 fontWeight: 700,
                 cursor: "pointer",
                 letterSpacing: "0.5px",

@@ -125,7 +125,7 @@
   }
 
   @media (min-width: $mantine-breakpoint-sm) {
-    font-size: rem(48px);
+    font-size: rem(64px);
   }
 }
 

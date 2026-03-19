@@ -83,6 +83,11 @@
   height: 100%;
   /* promote wrapper lên GPU layer — tránh stacking context mới trên card */
   will-change: transform;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+
+  @media (min-width: $mantine-breakpoint-sm) {
+    max-width: rem(354px);
+  }
 }
 
 /* ═══════════════════════════════════════════════

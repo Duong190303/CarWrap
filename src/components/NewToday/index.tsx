@@ -14,6 +14,7 @@ import { IconArrowRight, IconShare2 } from "@tabler/icons-react";
 import { motion, useInView } from "framer-motion";
 import classes from "./NewToday.module.css";
 import { GradientText } from "../UI/GradientText/GradientText";
+import { SimpleGrid } from "@mantine/core";
 
 export type NewsItem = {
   id: string | number;
@@ -122,12 +123,7 @@ export const NewToday: React.FC<{ items?: NewsItem[] }> = ({
   const isInView = useInView(ref, { once: true, margin: "0px 0px -80px 0px" });
 
   return (
-    <Box
-      component="section"
-      className={classes.section}
-      id="news"
-      ref={ref}
-    >
+    <Box component="section" className={classes.section} id="news" ref={ref}>
       <Container size="lg">
         {/* ── Heading ── */}
         <motion.div
@@ -157,11 +153,11 @@ export const NewToday: React.FC<{ items?: NewsItem[] }> = ({
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <Box className={classes.grid}>
+          <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
             {items.map((it) => (
               <NewsCard key={it.id} item={it} />
             ))}
-          </Box>
+          </SimpleGrid>
         </motion.div>
       </Container>
     </Box>

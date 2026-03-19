@@ -30,15 +30,16 @@ export const NavItem: React.FC<{
   if (item.children && item.children.length > 0) {
     return (
       <Menu
-        trigger="hover"
+        trigger="click-hover"
         openDelay={80}
         closeDelay={120}
         transitionProps={{ duration: 120 }}
         position="bottom-start"
-        offset={6}
+        offset={14}
+        withArrow
         width={260}
         shadow="md"
-        classNames={{ dropdown: classes.Menudropdown, label: classes.Menulabel }}
+        classNames={{ dropdown: classes.Menudropdown, label: classes.Menulabel, item: classes.Menuitem }}
       >
         <Menu.Target>
           <Box
@@ -51,7 +52,6 @@ export const NavItem: React.FC<{
               border: 0,
               cursor: "pointer",
               position: "relative",
-              // paddingBottom: rem(8),
               display: "flex",
               alignItems: "center",
               gap: 6,
@@ -60,13 +60,13 @@ export const NavItem: React.FC<{
             <Text
               fw={700}
               size="16px"
-              c={isActive ? "#fff" : "#fff"}
+              c={isActive ? "var(--text-primary)" : "var(--text-primary)"}
               tt="uppercase"
               style={{ letterSpacing: 0.6 }}
             >
               {item.label}
             </Text>
-            <IconChevronDown size={16} stroke={2} color="#fff" />
+            <IconChevronDown size={16} stroke={2} color="var(--text-primary)" />
 
             {showLine && (
               <motion.div
@@ -92,15 +92,13 @@ export const NavItem: React.FC<{
               key={c.id}
               component={Link}
               href={c.href}
+              c={{}}
               style={{
                 textTransform: "uppercase",
                 fontWeight: 700,
-                fontSize: rem(16),
+                fontSize: rem(14),
                 letterSpacing: 0.5,
-                transition: "color .2s ease",
-                color: c.active ? "var(--secondary)" : "var(--text-primary)",
-                // background:
-                //   "linear-gradient(103.24deg, #763DF2 0%, #0583F2 100%)",
+                color: "var(--text-primary)",
               }}
             >
               {c.label}

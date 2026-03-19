@@ -4,7 +4,12 @@
   border-color: #9a99994d;
 }
 
-.Menulabel[data="active"] {
-  background-color: aqua;
-  color: black;
+.Menuitem {
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    transition: background-color 0.3s ease;
+    background-color: #9a99994d;
+    color: var(--text-primary);
+  }
 }
