@@ -39,7 +39,7 @@ export function LeftPane({
   isInView = false,
 }: Props) {
   return (
-    <Stack gap={0} className={classes.leftWrap} justify="center" h="100%">
+    <Stack gap={0} className={classes.leftWrap} justify="flex-start" h="100%">
       {/* ── Eyebrow ── */}
       <motion.div
         initial={{ opacity: 0, x: -24 }}

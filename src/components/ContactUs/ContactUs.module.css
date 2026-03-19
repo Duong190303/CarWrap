@@ -68,9 +68,6 @@
 /* ═══════════════════════════════════════════════
    LEFT PANE
 ═══════════════════════════════════════════════ */
-.leftWrap {
-  padding-top: clamp(8px, 2vw, 24px);
-}
 
 /* eyebrow label */
 .eyebrow {
@@ -121,7 +118,11 @@
   }
 
   @media (min-width: $mantine-breakpoint-sm) {
-    font-size: rem(48px);
+    font-size: rem(64px);
+  }
+
+  @media (min-width: $mantine-breakpoint-md) {
+    font-size: rem(76px);
   }
 }
 

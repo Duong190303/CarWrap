@@ -39,6 +39,9 @@ export const BranchTable: React.FC<Props> = ({ isInView }) => {
         display: "flex",
         flexDirection: "column",
         gap: rem(8),
+        maxWidth: rem(440),
+        justifyContent: "center",
+        margin: "0 auto",
       }}
     >
       {/* Header label */}

@@ -100,7 +100,12 @@ export const Branch: React.FC = () => {
         </motion.div>
 
         {/* ── Map + Table ── */}
-        <Grid gutter={{ base: rem(32), md: rem(48) }} align="center">
+        <Grid
+          gutter={{ base: rem(32), md: rem(48) }}
+          align="center"
+          justify="center"
+          styles={{ inner: { justifyContent: "center" }, col: { justifyContent: "center"} }}
+        >
           {/* Map */}
           <Grid.Col span={{ base: 12, md: 7 }}>
             <motion.div
@@ -144,7 +149,11 @@ export const Branch: React.FC = () => {
           </Grid.Col>
 
           {/* Table */}
-          <Grid.Col span={{ base: 12, md: 5 }}>
+          <Grid.Col
+            span={{ base: 12, md: 5 }}
+            miw={{ base: "100%", xs: rem(435) }}
+            style={{ justifyContent: "center" }}
+          >
             <motion.div
               variants={tableVariants}
               initial="hidden"
