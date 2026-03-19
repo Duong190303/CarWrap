@@ -35,12 +35,13 @@ export const ContactForm: React.FC<BookingFormProps> = ({
     initialValues: { ...DEFAULT_VALUES, ...initial },
     validateInputOnBlur: true,
     validate: {
-      name:     (v) => (v.trim().length >= 2   ? null : "Enter a valid name"),
-      phone:    (v) => (/^\+?[0-9\s\-()]{8,}$/.test(v) ? null : "Phone number is invalid"),
-      email:    (v) => (/^\S+@\S+\.\S+$/.test(v) ? null : "Email is invalid"),
-      services: (v) => (v.length > 0            ? null : "Select at least one service"),
-      date:     (v) => (v                        ? null : "Pick a date"),
-      accept:   (v) => (v                        ? null : "You must agree to the terms"),
+      name: (v) => (v.trim().length >= 2 ? null : "Enter a valid name"),
+      phone: (v) =>
+        /^\+?[0-9\s\-()]{8,}$/.test(v) ? null : "Phone number is invalid",
+      email: (v) => (/^\S+@\S+\.\S+$/.test(v) ? null : "Email is invalid"),
+      services: (v) => (v.length > 0 ? null : "Select at least one service"),
+      date: (v) => (v ? null : "Pick a date"),
+      accept: (v) => (v ? null : "You must agree to the terms"),
     },
   });
 
@@ -50,28 +51,37 @@ export const ContactForm: React.FC<BookingFormProps> = ({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
-    if (!res.ok) { alert("Something went wrong. Please try again later."); return; }
+    if (!res.ok) {
+      alert("Something went wrong. Please try again later.");
+      return;
+    }
     alert("Your appointment request has been sent!");
     form.reset();
   };
 
   return (
-    <Paper radius="xl" p={{ base: "lg", md: "xl" }} className={classes.formCard}>
-
+    <Paper
+      radius="xl"
+      p={{ base: "lg", md: "xl" }}
+      className={classes.formCard}
+    >
       {/* ── Form header ── */}
       <Box className={classes.formHeader}>
         <Text className={classes.formTitle}>BOOK A GARAGE SERVICE</Text>
         <Text className={classes.formSubtitle}>
-          Fill in the details below and {"we'll"} get back to you within 24 hours.
+          Fill in the details below and {"we'll"} get back to you within 24
+          hours.
         </Text>
         <Box className={classes.formHeaderLine} />
       </Box>
 
       <form onSubmit={form.onSubmit(handleSubmit)}>
         <Grid gutter="md">
-
           {/* Salutation */}
-          <GridCol span={{ base: 12, sm: 4 }} style={{ alignItems: "flex-end", display: "flex" }}>
+          <GridCol
+            span={{ base: 12, sm: 4 }}
+            style={{ alignItems: "flex-end", display: "flex" }}
+          >
             <Select
               aria-label="Salutation"
               data={["Mr", "Ms", "Mx"]}
@@ -118,7 +128,13 @@ export const ContactForm: React.FC<BookingFormProps> = ({
 
           {/* Services */}
           <GridCol span={12}>
-            <Text size="xs" fw={700} className={classes.inputLabel} mb={8} style={{ letterSpacing: "0.12em" }}>
+            <Text
+              size="xs"
+              fw={700}
+              className={classes.inputLabel}
+              mb={8}
+              style={{ letterSpacing: "0.12em" }}
+            >
               SERVICES <span style={{ color: "#f43f5e" }}>*</span>
             </Text>
             <CheckboxGroup {...form.getInputProps("services")}>
@@ -137,7 +153,9 @@ export const ContactForm: React.FC<BookingFormProps> = ({
               </Group>
             </CheckboxGroup>
             {form.errors.services && (
-              <Text size="xs" c="red" mt={4}>{form.errors.services}</Text>
+              <Text size="xs" c="red" mt={4}>
+                {form.errors.services}
+              </Text>
             )}
           </GridCol>
 
@@ -204,11 +222,11 @@ export const ContactForm: React.FC<BookingFormProps> = ({
               fullWidth
               rightSection={<IconSend size={16} />}
               className={classes.submit}
+              fz={{ base: 12, sm: 14, md: 16 }}
             >
               BOOK APPOINTMENT
             </Button>
           </GridCol>
-
         </Grid>
       </form>
     </Paper>

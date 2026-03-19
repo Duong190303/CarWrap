@@ -233,7 +233,7 @@ export const Hero: React.FC = () => {
                     {stat.suffix}
                   </Text>
                   <Text
-                    fz={{ base: 10, xs: 13, md: 16 }}
+                    fz={{ base: 10, sm: 13 }}
                     size="xs"
                     fw={700}
                     ta="center"
