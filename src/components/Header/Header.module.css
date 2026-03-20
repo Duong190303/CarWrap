@@ -148,3 +148,10 @@
     width: 140px;
   }
 }
+
+.HeroViewServiceBtn {
+  background: #9a99994d;
+  backdrop-filter: blur(10px);
+  border-color: #9a99994d;
+  transform: scale(1.02);
+}

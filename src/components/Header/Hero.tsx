@@ -435,11 +435,11 @@ export const Hero: React.FC = () => {
             style={{
               padding: "1px",
               borderRadius: "4px",
-              border: "1px solid var(--secondary)",
-              borderColor: "var(--button-primary)",
+              border: "1px solid #9a99994d",
               display: "inline-block",
               cursor: "pointer",
             }}
+            className={classes.HeroViewServiceBtn}
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
