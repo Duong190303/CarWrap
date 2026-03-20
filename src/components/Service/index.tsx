@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { Box, Container } from "@mantine/core";
 import { ServiceList } from "./ServiceList";
 // import { ButtonOutline } from "../Gallery/ButtonOutline"
@@ -12,7 +12,7 @@ export const Service: React.FC = () => {
       id="services"
       bg={"var(--mantine-color-dark-8)"}
     >
-      <Container size="xl" >
+      <Container size="xl">
         <ServiceList />
       </Container>
     </Box>

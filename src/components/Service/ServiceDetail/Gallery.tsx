@@ -76,20 +76,24 @@ export const Gallery: React.FC<{ service: ServiceDetail }> = ({ service }) => {
           animate={isInView ? "visible" : "hidden"}
         >
           <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={rem(12)}>
-            {service.gallery.map((src, i) => (
-              <motion.div key={i} variants={staggerItem}>
-                <Box className={classes.galleryItem}>
-                  <Image
-                    src={src}
-                    alt={`${service.title} ${i + 1}`}
-                    fit="cover"
-                    h="100%"
-                    w="100%"
-                  />
-                  <Box className={classes.galleryOverlay} />
-                </Box>
-              </motion.div>
-            ))}
+            {service.gallery.map((src, i) => {
+              // Đảm bảo path luôn absolute (bắt đầu bằng /)
+              const imgSrc = src.startsWith("/") ? src : `/${src}`;
+              return (
+                <motion.div key={i} variants={staggerItem}>
+                  <Box className={classes.galleryItem}>
+                    <Image
+                      src={imgSrc}
+                      alt={`${service.title} ${i + 1}`}
+                      fit="cover"
+                      h="100%"
+                      w="100%"
+                    />
+                    <Box className={classes.galleryOverlay} />
+                  </Box>
+                </motion.div>
+              );
+            })}
           </SimpleGrid>
         </motion.div>
       </Container>

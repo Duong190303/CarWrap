@@ -65,7 +65,12 @@ export const Overview: React.FC<{ service: ServiceDetail }> = ({ service }) => {
             >
               <Box className={classes.overviewImgWrap}>
                 <Image
-                  src={service.image}
+                  src={
+                    service.image.startsWith("/") ||
+                    service.image.startsWith("http")
+                      ? service.image
+                      : `/${service.image}`
+                  }
                   alt={service.title}
                   fit="cover"
                   h="100%"

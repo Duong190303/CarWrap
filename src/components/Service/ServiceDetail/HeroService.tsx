@@ -1,15 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  Box,
-  Container,
-  Text,
-  Image,
-  rem,
-  Anchor,
-  Flex,
-} from "@mantine/core";
+import { Box, Container, Text, Image, rem, Anchor, Flex } from "@mantine/core";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -34,13 +26,17 @@ const fadeLeft = (delay = 0) => ({
   },
 });
 
-export const HeroService: React.FC<{ service: ServiceDetail }> = ({ service }) => {
+export const HeroService: React.FC<{ service: ServiceDetail }> = ({
+  service,
+}) => {
   return (
     <Box className={classes.hero}>
-      {/* Background */}``
+      {/* Background */}
       <Box
         className={classes.heroBg}
-        style={{ backgroundImage: `url(${service.image})` }}
+        style={{
+          backgroundImage: `url(${service.image.startsWith("/") || service.image.startsWith("http") ? service.image : `/${service.image}`})`,
+        }}
       />
       <Box className={classes.heroOverlay} />
       {/* Glow */}
