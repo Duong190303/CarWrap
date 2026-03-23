@@ -37,13 +37,9 @@ export const DEFAULT_NAVIGATION_ITEMS: NavigationType[] = [
     label: "Services",
     href: "/#",
     children: [
-      { id: "2a", label: "Car Wrapping", href: "/#services" },
-      {
-        id: "2b",
-        label: "Car Washing",
-        href: "/#services",
-      },
-      { id: "2c", label: " Car Repair", href: "/#services" },
+      { id: "2a", label: "Car Wrapping", href: "/services/wrapping" },
+      { id: "2b", label: "Car Washing", href: "/services/washing" },
+      { id: "2c", label: "Car Repair", href: "/services/repair" },
     ],
   },
 ];
@@ -90,11 +86,11 @@ export const Header: React.FC<{ pinned: boolean }> = ({ pinned }) => {
           <Group flex={1} h="100%">
             <UnstyledButton component={Link} href="#">
               <Image
-                src="/LogoCarWrap.jpg"
+                src="https://res.cloudinary.com/dguivkg8d/image/upload/v1774235693/Frame_2_2_gnpjjo.png"
                 alt="logo"
                 fit="contain"
                 h="100%"
-                w={{ base: 40, md: 40 }}
+                w={{ base: "60%", sm: "20%", md: "24%", lg: "15%" }}
                 radius={100}
               />
             </UnstyledButton>

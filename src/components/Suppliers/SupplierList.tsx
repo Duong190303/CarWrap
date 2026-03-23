@@ -207,12 +207,12 @@ export const SupplierList: React.FC<{
 
 // --- Demo data ---
 const demoSuppliers: Supplier[] = [
-  { id: 1, name: "Wrapstock", logo: "/logobrand/brand1.png", href: "#" },
-  { id: 2, name: "3D Changer", logo: "/logobrand/brand2.png" },
-  { id: 3, name: "Unreal Exists", logo: "/logobrand/brand3.png" },
-  { id: 4, name: "XERO", logo: "/logobrand/brand4.png" },
-  { id: 5, name: "Premium Films", logo: "/logobrand/brand5.png" },
-  { id: 6, name: "3D Changer", logo: "/logobrand/brand6.png" },
-  { id: 7, name: "Unreal Exists", logo: "/logobrand/brand7.png" },
-  { id: 8, name: "XERO", logo: "/logobrand/brand8.png" },
+  { id: 1, name: "Wrapstock", logo: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774061399/brand7_ebcprz.png" },
+  { id: 2, name: "3D Changer", logo: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774061399/brand8_iutsmn.png" },
+  { id: 3, name: "Unreal Exists", logo: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774061399/brand5_ygjsud.png" },
+  { id: 4, name: "XERO", logo: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774061399/brand6_vrzsa1.png" },
+  { id: 5, name: "Premium Films", logo: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774061398/brand4_jyjx6g.png" },
+  { id: 6, name: "3D Changer", logo: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774061398/brand2_kzv55x.png" },
+  { id: 7, name: "Unreal Exists", logo: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774061397/brand1_rgh8ek.png" },
+  { id: 8, name: "XERO", logo: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774061398/brand3_iv8nj5.png" },
 ];

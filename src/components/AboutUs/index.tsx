@@ -69,9 +69,9 @@ export const AboutUs: React.FC<AboutProps> = ({
   // ctaText = "LEARN MORE",
   // ctaHref = "#",
   images = [
-    "/assets/about/img1.jpg",
-    "/assets/about/img2.jpg",
-    "/assets/about/img3.jpg",
+    "https://res.cloudinary.com/dguivkg8d/image/upload/v1774063005/img3_tbe2ir.jpg",
+    "https://res.cloudinary.com/dguivkg8d/image/upload/v1774063005/img2_otitjl.jpg",
+    "https://res.cloudinary.com/dguivkg8d/image/upload/v1774063004/img1_ea3l3h.jpg",
   ],
 }: AboutProps) => {
   const ref = useRef<HTMLDivElement>(null);

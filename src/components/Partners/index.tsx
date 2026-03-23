@@ -11,7 +11,7 @@ type Partner = {
 };
 
 const PARTNERS: Partner[] = [
-  { src: "/logobrand/groupbrand.png", alt: "groupbrand" },
+  { src: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774061402/groupbrand_ropwxa.png", alt: "groupbrand" },
 ];
 
 // ── Variants ─────────────────────────────────────────────────

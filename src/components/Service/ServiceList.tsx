@@ -164,8 +164,8 @@ const defaultItems: ServiceItem[] = [
     title: "Wrapping",
     description:
       "Premium paint protection film and full colour-change wraps. Shield your factory finish and express your personal style.",
-    icon: "/icons/wrapping.png",
-    image: "/assets/service/wrapping.jpg",
+    icon: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774062960/wrapping_qhokss.png",
+    image: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774063109/wrapping_xzt0et.jpg",
     href: "/services/wrapping",
   },
   {
@@ -173,7 +173,7 @@ const defaultItems: ServiceItem[] = [
     title: "Washing",
     description:
       "Deep interior and exterior detailing using professional-grade products to restore your car to showroom condition.",
-    icon: "/icons/wash.png",
+    icon: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774062961/wash_mhiwff.png",
     image:
       "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1470&auto=format&fit=crop",
     href: "/services/washing",
@@ -183,8 +183,8 @@ const defaultItems: ServiceItem[] = [
     title: "Repair",
     description:
       "Expert repair services for vinyl wraps and vehicle surfaces — from small scratches to damaged wrap sections.",
-    icon: "/icons/repair.png",
-    image: "/assets/service/protection.jpg",
+    icon: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774062959/repair_mvqhlo.png",
+    image: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774063104/Repair_jlalxa.jpg",
     href: "/services/repair",
   },
 ];

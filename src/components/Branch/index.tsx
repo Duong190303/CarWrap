@@ -133,7 +133,7 @@ export const Branch: React.FC = () => {
                   }}
                 />
                 <Image
-                  src="/map_USA.png"
+                  src="https://res.cloudinary.com/dguivkg8d/image/upload/v1774062920/map_USA_kno6tk.png"
                   alt="USA Map"
                   maw={580}
                   mx="auto"

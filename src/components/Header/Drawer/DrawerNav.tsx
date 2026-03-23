@@ -83,7 +83,10 @@ export const DrawerNav: React.FC<NavProps> = ({ items }) => {
         <Drawer.Overlay />
         <Drawer.Content className={classes.drawerContent}>
           <Drawer.Header
-            style={{ borderBottom: "1px solid var(--text-primary)", padding: 10 }}
+            style={{
+              borderBottom: "1px solid var(--text-primary)",
+              padding: 10,
+            }}
             className={classes.drawerHeader}
           >
             <UnstyledButton
@@ -92,11 +95,11 @@ export const DrawerNav: React.FC<NavProps> = ({ items }) => {
               onClick={handleCloseAfterClick}
             >
               <Image
-                src="/LogoCarWrap.jpg"
+                src="https://res.cloudinary.com/dguivkg8d/image/upload/v1774235693/Frame_2_2_gnpjjo.png"
                 alt="logo"
                 fit="contain"
                 h="100%"
-                w={30}
+                w={"50%"}
                 radius={30}
               />
             </UnstyledButton>

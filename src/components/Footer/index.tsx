@@ -101,9 +101,9 @@ export const Footer: React.FC = () => {
             style={{ flex: "0 0 auto", maxWidth: 260 }}
           >
             <Image
-              src="/LogoCarWrap.jpg"
+              src="https://res.cloudinary.com/dguivkg8d/image/upload/v1774235693/Frame_2_2_gnpjjo.png"
               alt="WrapStyle"
-              w={52}
+              w={{ base: "70%", xs: "70%" }}
               mb={rem(16)}
               radius={30}
             />
@@ -154,103 +154,103 @@ export const Footer: React.FC = () => {
           </motion.div>
 
           {/* Services col */}
-            <motion.div
-              custom={1}
-              variants={colVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "0px 0px -40px 0px" }}
+          <motion.div
+            custom={1}
+            variants={colVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "0px 0px -40px 0px" }}
+          >
+            <Text
+              fz={rem(10)}
+              fw={700}
+              tt="uppercase"
+              c="var(--secondary)"
+              style={{ letterSpacing: "0.18em" }}
+              mb={rem(18)}
             >
-              <Text
-                fz={rem(10)}
-                fw={700}
-                tt="uppercase"
-                c="var(--secondary)"
-                style={{ letterSpacing: "0.18em" }}
-                mb={rem(18)}
-              >
-                Services
-              </Text>
-              <Flex direction="column" gap={rem(11)}>
-                {LINKS.services.map((l) => (
-                  <Anchor
-                    key={l.label}
-                    href={l.href}
-                    underline="never"
-                    style={{
-                      fontSize: rem(13),
-                      color: "rgba(255,255,255,0.5)",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: rem(4),
-                      transition: "color 0.22s ease, gap 0.22s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      const el = e.currentTarget as HTMLElement;
-                      el.style.color = "#ffffff";
-                      el.style.gap = rem(8);
-                    }}
-                    onMouseLeave={(e) => {
-                      const el = e.currentTarget as HTMLElement;
-                      el.style.color = "rgba(255,255,255,0.5)";
-                      el.style.gap = rem(4);
-                    }}
-                  >
-                    <IconArrowUpRight size={13} style={{ flexShrink: 0 }} />
-                    {l.label}
-                  </Anchor>
-                ))}
-              </Flex>
-            </motion.div>
-            {/* Company col */}
-            <motion.div
-              custom={2}
-              variants={colVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "0px 0px -40px 0px" }}
+              Services
+            </Text>
+            <Flex direction="column" gap={rem(11)}>
+              {LINKS.services.map((l) => (
+                <Anchor
+                  key={l.label}
+                  href={l.href}
+                  underline="never"
+                  style={{
+                    fontSize: rem(13),
+                    color: "rgba(255,255,255,0.5)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: rem(4),
+                    transition: "color 0.22s ease, gap 0.22s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.color = "#ffffff";
+                    el.style.gap = rem(8);
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.color = "rgba(255,255,255,0.5)";
+                    el.style.gap = rem(4);
+                  }}
+                >
+                  <IconArrowUpRight size={13} style={{ flexShrink: 0 }} />
+                  {l.label}
+                </Anchor>
+              ))}
+            </Flex>
+          </motion.div>
+          {/* Company col */}
+          <motion.div
+            custom={2}
+            variants={colVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "0px 0px -40px 0px" }}
+          >
+            <Text
+              fz={rem(10)}
+              fw={700}
+              tt="uppercase"
+              c="var(--secondary)"
+              style={{ letterSpacing: "0.18em" }}
+              mb={rem(18)}
             >
-              <Text
-                fz={rem(10)}
-                fw={700}
-                tt="uppercase"
-                c="var(--secondary)"
-                style={{ letterSpacing: "0.18em" }}
-                mb={rem(18)}
-              >
-                Company
-              </Text>
-              <Flex direction="column" gap={rem(11)}>
-                {LINKS.company.map((l) => (
-                  <Anchor
-                    key={l.label}
-                    href={l.href}
-                    underline="never"
-                    style={{
-                      fontSize: rem(13),
-                      color: "rgba(255,255,255,0.5)",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: rem(4),
-                      transition: "color 0.22s ease, gap 0.22s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      const el = e.currentTarget as HTMLElement;
-                      el.style.color = "#ffffff";
-                      el.style.gap = rem(8);
-                    }}
-                    onMouseLeave={(e) => {
-                      const el = e.currentTarget as HTMLElement;
-                      el.style.color = "rgba(255,255,255,0.5)";
-                      el.style.gap = rem(4);
-                    }}
-                  >
-                    <IconArrowUpRight size={13} style={{ flexShrink: 0 }} />
-                    {l.label}
-                  </Anchor>
-                ))}
-              </Flex>
-            </motion.div>
+              Company
+            </Text>
+            <Flex direction="column" gap={rem(11)}>
+              {LINKS.company.map((l) => (
+                <Anchor
+                  key={l.label}
+                  href={l.href}
+                  underline="never"
+                  style={{
+                    fontSize: rem(13),
+                    color: "rgba(255,255,255,0.5)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: rem(4),
+                    transition: "color 0.22s ease, gap 0.22s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.color = "#ffffff";
+                    el.style.gap = rem(8);
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.color = "rgba(255,255,255,0.5)";
+                    el.style.gap = rem(4);
+                  }}
+                >
+                  <IconArrowUpRight size={13} style={{ flexShrink: 0 }} />
+                  {l.label}
+                </Anchor>
+              ))}
+            </Flex>
+          </motion.div>
 
           {/* Contact col */}
           <motion.div

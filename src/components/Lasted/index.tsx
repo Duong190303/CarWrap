@@ -28,33 +28,33 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    src: "assets/lasted/car1.jpg",
+    src: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774064200/3_cqiscn.jpg",
     name: "McLaren 765LT",
     service: "PPF Service",
   },
   {
-    src: "assets/lasted/car8.jpg",
+    src: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774064199/4_s42wj9.jpg",
     name: "Porsche 911",
     service: "Ceramic Coating",
   },
   {
-    src: "assets/lasted/car3.jpg",
+    src: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774064199/1_uzi55h.jpg",
     name: "Ferrari 296",
     service: "Detailing Package",
   },
   {
-    src: "assets/lasted/car1.jpg",
+    src: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774063498/car7_oir19y.jpg",
     name: "Chevrolet Camaro",
     service: "Wrap Satin Black",
   },
-  { src: "assets/lasted/car8.jpg", name: "BMW M4", service: "PPF Front Kit" },
+  { src: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774063496/car6_sonxlt.jpg", name: "BMW M4", service: "PPF Front Kit" },
   {
-    src: "assets/lasted/car6.jpg",
+    src: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774063495/car5_bghuc2.jpg",
     name: "Alfa Romeo 33",
     service: "Studio Photoshoot",
   },
   {
-    src: "assets/lasted/car7.jpg",
+    src: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774064198/2_qg3mja.jpg",
     name: "Maserati GranTurismo",
     service: "Paint Correction",
   },

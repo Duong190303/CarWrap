@@ -9,11 +9,12 @@
 .bgImage {
   position: absolute;
   inset: 0;
-  background-image: url("/logobrand/supplierimage.jpg");
+  background-image: url("https://res.cloudinary.com/dguivkg8d/image/upload/v1774061403/supplierimage_guugvl.jpg");
   background-size: cover;
   background-position: center;
   filter: blur(0px) brightness(0.55) saturate(0.8);
-  transform: scale(1.04); /* hide blur edge */
+  transform: scale(1.04);
+  /* hide blur edge */
   z-index: 0;
 }
 
@@ -21,12 +22,10 @@
 .bgOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(10, 12, 16, 0.62) 0%,
-    rgba(10, 12, 16, 0.45) 50%,
-    rgba(10, 12, 16, 0.65) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(10, 12, 16, 0.62) 0%,
+      rgba(10, 12, 16, 0.45) 50%,
+      rgba(10, 12, 16, 0.65) 100%);
   z-index: 1;
 }
 
@@ -38,11 +37,9 @@
   width: clamp(280px, 35vw, 480px);
   height: clamp(280px, 35vw, 480px);
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(56, 159, 255, 0.12) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(56, 159, 255, 0.12) 0%,
+      transparent 70%);
   filter: blur(40px);
   z-index: 1;
   pointer-events: none;
@@ -55,11 +52,9 @@
   width: clamp(240px, 30vw, 420px);
   height: clamp(240px, 30vw, 420px);
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(168, 85, 247, 0.1) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(168, 85, 247, 0.1) 0%,
+      transparent 70%);
   filter: blur(40px);
   z-index: 1;
   pointer-events: none;

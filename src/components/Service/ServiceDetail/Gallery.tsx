@@ -78,7 +78,7 @@ export const Gallery: React.FC<{ service: ServiceDetail }> = ({ service }) => {
           <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={rem(12)}>
             {service.gallery.map((src, i) => {
               // Đảm bảo path luôn absolute (bắt đầu bằng /)
-              const imgSrc = src.startsWith("/") ? src : `/${src}`;
+              const imgSrc = src.startsWith("") ? src : `${src}`;
               return (
                 <motion.div key={i} variants={staggerItem}>
                   <Box className={classes.galleryItem}>

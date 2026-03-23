@@ -173,7 +173,7 @@ const defaultItems: NewsItem[] = [
     title:
       "PPF OPTICSHIELD FILM – PREMIUM CAR PROTECTION PRODUCT AVAILABLE AT WRAPSTYLE VIET...",
     date: "March 2, 2025",
-    image: "/assets/carousel/img1.jpg",
+    image: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774063321/img1_n6bxmy.jpg",
     href: "#",
   },
   {
