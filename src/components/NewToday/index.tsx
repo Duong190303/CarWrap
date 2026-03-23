@@ -173,7 +173,8 @@ const defaultItems: NewsItem[] = [
     title:
       "PPF OPTICSHIELD FILM – PREMIUM CAR PROTECTION PRODUCT AVAILABLE AT WRAPSTYLE VIET...",
     date: "March 2, 2025",
-    image: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774063321/img1_n6bxmy.jpg",
+    image:
+      "https://res.cloudinary.com/dguivkg8d/image/upload/v1774063321/img1_n6bxmy.jpg",
     href: "#",
   },
   {
@@ -183,7 +184,8 @@ const defaultItems: NewsItem[] = [
     title:
       "CLOSE-UP OF 'SUPER COW' LAMBORGHINI URUS S GOING DOWN THE STREETS WITH BABY BLUE...",
     date: "October 23, 2024",
-    image: "/assets/carousel/img2.jpg",
+    image:
+      "https://res.cloudinary.com/dguivkg8d/image/upload/v1774064200/3_cqiscn.jpg",
     href: "#",
   },
   {
@@ -193,7 +195,8 @@ const defaultItems: NewsItem[] = [
     title:
       "WRAPSTYLE 'BEAUTY' FOR PORSCHE CLUB VIETNAM AFTER THE JOURNEY EXPLORATION...",
     date: "October 17, 2024",
-    image: "/assets/carousel/img3.jpg",
+    image:
+      "https://res.cloudinary.com/dguivkg8d/image/upload/v1774236876/7_ekyype.jpg",
     href: "#",
   },
 ];
