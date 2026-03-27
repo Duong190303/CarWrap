@@ -1,24 +1,35 @@
 "use client";
 
-import { Box, Container, Flex, Text, Image, Anchor, rem } from "@mantine/core";
-import { motion } from "framer-motion";
 import {
-  IconBrandFacebook,
-  IconBrandInstagram,
-  IconBrandYoutube,
-  IconBrandX,
-  IconMapPin,
-  IconPhone,
-  IconMail,
-  IconArrowUpRight,
-} from "@tabler/icons-react";
+  Box,
+  Container,
+  Flex,
+  Text,
+  Image,
+  Anchor,
+  rem,
+  Group,
+} from "@mantine/core";
+import { motion } from "framer-motion";
+import { IconMapPin, IconPhone, IconArrowUpRight } from "@tabler/icons-react";
 
 // ── Data ─────────────────────────────────────────────────────
 const LINKS = {
   services: [
-    { label: "Car Wrapping", href: "#" },
-    { label: "Car Washing", href: "#" },
-    { label: "Car Repair", href: "#" },
+    { label: "Full Vehicle Wraps", href: "#" },
+    { label: "Partial Vehicle Wraps", href: "#" },
+    { label: "Color Change Wraps", href: "#" },
+    { label: "Paint Protection Film (PPF) Installation", href: "#" },
+    { label: "Commercial Fleet Wraps", href: "#" },
+    { label: "Custom Vinyl Graphics", href: "#" },
+  ],
+  services2: [
+    { label: "Vehicle Lettering and Decals", href: "#" },
+    { label: "Matte and Satin Wraps", href: "#" },
+    { label: "Gloss and Metallic Wraps", href: "#" },
+    { label: "Chrome Delete", href: "#" },
+    { label: "Headlight and Taillight Tinting", href: "#" },
+    { label: "Wrap Removal Services", href: "#" },
   ],
   company: [
     { label: "About Us", href: "#aboutus" },
@@ -30,16 +41,31 @@ const LINKS = {
 };
 
 const SOCIALS = [
-  { icon: IconBrandFacebook, href: "#", label: "Facebook" },
-  { icon: IconBrandX, href: "#", label: "X" },
-  { icon: IconBrandInstagram, href: "#", label: "Instagram" },
-  { icon: IconBrandYoutube, href: "#", label: "YouTube" },
+  {
+    img: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774601531/sm-6_vrtaq7.png",
+    href: "https://www.facebook.com/profile.php?id=61560696729839",
+    label: "Facebook",
+  },
+  {
+    img: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774601533/sm-2_rb5ifv.png",
+    href: "https://www.instagram.com/resendiz_rwraps/",
+    label: "Instagram",
+  },
+  {
+    img: "https://res.cloudinary.com/dguivkg8d/image/upload/v1774599412/sm-7_erhfz3.png",
+    href: "https://www.yelp.com/biz/resendiz-rwraps-cibolo",
+    label: "Yelp",
+  },
 ];
 
 const CONTACT = [
-  { icon: IconMapPin, text: "38A Nguyen Quy Duc, An Phu Ward, Thu Duc, HCM" },
-  { icon: IconPhone, text: "+84 933 622 225" },
-  { icon: IconMail, text: "hello@wrapstyle.vn" },
+  {
+    icon: IconMapPin,
+    text: "280 Weil Rd #105, Cibolo, TX, US, 78108",
+    href: "https://maps.app.goo.gl/XG7oaDWSKfV1EBa88",
+  },
+  { icon: IconPhone, text: "+18304024222" },
+  // { icon: IconMail, text: "[EMAIL_ADDRESS]" },
 ];
 
 // ── Variants ─────────────────────────────────────────────────
@@ -114,7 +140,7 @@ export const Footer: React.FC = () => {
 
             {/* Social icons */}
             <Flex gap={rem(10)}>
-              {SOCIALS.map(({ icon: Icon, href, label }) => (
+              {SOCIALS.map(({ img: Img, href, label }) => (
                 <Anchor
                   key={label}
                   href={href}
@@ -147,7 +173,7 @@ export const Footer: React.FC = () => {
                     el.style.transform = "translateY(0)";
                   }}
                 >
-                  <Icon size={16} stroke={1.5} />
+                  <Image src={Img} alt={label} w={24} h={24} radius={30} />
                 </Anchor>
               ))}
             </Flex>
@@ -171,37 +197,73 @@ export const Footer: React.FC = () => {
             >
               Services
             </Text>
-            <Flex direction="column" gap={rem(11)}>
-              {LINKS.services.map((l) => (
-                <Anchor
-                  key={l.label}
-                  href={l.href}
-                  underline="never"
-                  style={{
-                    fontSize: rem(13),
-                    color: "rgba(255,255,255,0.5)",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: rem(4),
-                    transition: "color 0.22s ease, gap 0.22s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.color = "#ffffff";
-                    el.style.gap = rem(8);
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.color = "rgba(255,255,255,0.5)";
-                    el.style.gap = rem(4);
-                  }}
-                >
-                  <IconArrowUpRight size={13} style={{ flexShrink: 0 }} />
-                  {l.label}
-                </Anchor>
-              ))}
-            </Flex>
+            <Group
+              style={{ display: "flex", flexDirection: "row" }}
+              gap={rem(11)}
+            >
+              <Flex direction="column" gap={rem(11)}>
+                {LINKS.services.map((l) => (
+                  <Anchor
+                    key={l.label}
+                    href={l.href}
+                    underline="never"
+                    style={{
+                      fontSize: rem(13),
+                      color: "rgba(255,255,255,0.5)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: rem(4),
+                      transition: "color 0.22s ease, gap 0.22s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.color = "#ffffff";
+                      el.style.gap = rem(8);
+                    }}
+                    onMouseLeave={(e) => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.color = "rgba(255,255,255,0.5)";
+                      el.style.gap = rem(4);
+                    }}
+                  >
+                    <IconArrowUpRight size={13} style={{ flexShrink: 0 }} />
+                    {l.label}
+                  </Anchor>
+                ))}
+              </Flex>
+              <Flex direction="column" gap={rem(11)}>
+                {LINKS.services.map((l) => (
+                  <Anchor
+                    key={l.label}
+                    href={l.href}
+                    underline="never"
+                    style={{
+                      fontSize: rem(13),
+                      color: "rgba(255,255,255,0.5)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: rem(4),
+                      transition: "color 0.22s ease, gap 0.22s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.color = "#ffffff";
+                      el.style.gap = rem(8);
+                    }}
+                    onMouseLeave={(e) => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.color = "rgba(255,255,255,0.5)";
+                      el.style.gap = rem(4);
+                    }}
+                  >
+                    <IconArrowUpRight size={13} style={{ flexShrink: 0 }} />
+                    {l.label}
+                  </Anchor>
+                ))}
+              </Flex>
+            </Group>
           </motion.div>
+
           {/* Company col */}
           <motion.div
             custom={2}
@@ -236,7 +298,7 @@ export const Footer: React.FC = () => {
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget as HTMLElement;
-                    el.style.color = "#ffffff";
+                    el.style.color = "var(--text-primary";
                     el.style.gap = rem(8);
                   }}
                   onMouseLeave={(e) => {
@@ -272,7 +334,7 @@ export const Footer: React.FC = () => {
               Contact
             </Text>
             <Flex direction="column" gap={rem(14)}>
-              {CONTACT.map(({ icon: Icon, text }) => (
+              {CONTACT.map(({ icon: Icon, text, href }) => (
                 <Flex key={text} align="flex-start" gap={rem(10)}>
                   <Box
                     style={{
@@ -290,7 +352,14 @@ export const Footer: React.FC = () => {
                   >
                     <Icon size={13} color="var(--secondary)" stroke={2} />
                   </Box>
-                  <Text fz={rem(13)} c="rgba(255,255,255,0.45)" lh={1.6}>
+                  <Text
+                    component="a"
+                    href={href}
+                    fz={rem(13)}
+                    c="rgba(255,255,255,0.45)"
+                    lh={1.6}
+                    target="_blank"
+                  >
                     {text}
                   </Text>
                 </Flex>
@@ -317,7 +386,7 @@ export const Footer: React.FC = () => {
           gap={rem(10)}
         >
           <Text fz={rem(11)} c="rgba(255,255,255,0.25)">
-            © 2025 WrapStyle Vietnam. All rights reserved.
+            © 2026 Resendiz Rwraps USA. All rights reserved.
           </Text>
           <Flex gap={rem(24)}>
             {["Privacy Policy", "Terms & Conditions"].map((t) => (

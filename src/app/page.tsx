@@ -22,8 +22,8 @@ export default function HomePage() {
       <ContactUs
         backgroundUrl="/images/city-bg.jpg"
         titleLines={["LET'S", "REVAMP", "YOUR", "RIDES"]}
-        description="For the best experience at WrapStyle Vietnam, you can book in advance via the form or contact our hotline."
-        hotline="+84 933 622 225"
+        description="For the best experience at Resendiz Rwraps, you can book in advance via the form or contact our hotline."
+        hotline="+18304024222"
       />{" "}
     </HomeLayout>
   );

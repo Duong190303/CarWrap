@@ -34,8 +34,8 @@ const infoVariants = {
 
 export function LeftPane({
   titleLines = ["LET'S", "REVAMP", "YOUR", "RIDES"],
-  description = "For the best experience at WrapStyle Vietnam, book in advance via the form or contact our hotline.",
-  hotline = "+84 933 622 225",
+  description = "For the best experience at Resendiz Rwraps, book in advance via the form or contact our hotline.",
+  hotline = "+18304024222",
   isInView = false,
 }: Props) {
   return (

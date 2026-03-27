@@ -56,16 +56,16 @@ const imgVariants = (delay: number) => ({
 export const AboutUs: React.FC<AboutProps> = ({
   eyebrow = "World Leading Experts",
   headingLine1 = "WE ARE",
-  headingLine2 = "CARWRAP",
-  highlight = "CarWrap™",
+  headingLine2 = "Resendiz Rwraps",
+  highlight = "Resendiz Rwraps",
   paragraphs = [
-    `${"CarWrap™"} is a world-leading company in the Wrapping industry. With over 14 years of experience and development, WrapStyle has always been a trusted choice for speed enthusiasts and automotive perfectionists.`,
+    `Resendiz Rwraps delivers distinctive vehicle customization in Cibolo. We specialize in applying durable vinyl wraps for full color changes, commercial fleet graphics, and effective paint protection film. Our team is committed to providing a meticulous installation for your car, truck, or van.`,
   ],
-  historyTitle = "Our History",
-  history = [
-    "CarWrap Vietnam was established in 2017, but its journey began in 2015, when CEO Phong Ho – a true car enthusiast – opened one of the first shops specializing in vehicle personalization, especially for supercars.",
-    "Recognizing the potential of the wrapping market in Vietnam, along with the increasing demand for premium services, CEO Phong Ho decided to partner with WrapStyle™ (…).",
-  ],
+  // historyTitle = "Our History",
+  // history = [
+  //   "Resendiz Rwraps was established in 2017, but its journey began in 2015, when CEO Phong Ho – a true car enthusiast – opened one of the first shops specializing in vehicle personalization, especially for supercars.",
+  //   "Recognizing the potential of the wrapping market in Vietnam, along with the increasing demand for premium services, CEO Phong Ho decided to partner with WrapStyle™ (…).",
+  // ],
   // ctaText = "LEARN MORE",
   // ctaHref = "#",
   images = [
@@ -90,12 +90,7 @@ export const AboutUs: React.FC<AboutProps> = ({
     ));
 
   return (
-    <Box
-      component="section"
-      id="aboutus"
-      className={classes.section}
-      ref={ref}
-    >
+    <Box component="section" id="aboutus" className={classes.section} ref={ref}>
       <Container size="xl">
         <Grid gutter={{ base: rem(40), md: rem(60) }} align="center">
           {/* ── LEFT: Text ── */}
@@ -132,14 +127,14 @@ export const AboutUs: React.FC<AboutProps> = ({
                   </Text>
                 ))}
                 {/* history */}
-                <Text className={classes.historyTitle}>{historyTitle}</Text>
-                <Flex gap={rem(8)} direction={"column"}>
+                {/* <Text className={classes.historyTitle}>{historyTitle}</Text> */}
+                {/* <Flex gap={rem(8)} direction={"column"}>
                   {history.map((h, i) => (
                     <Text key={i} className={classes.body} lh={1.75}>
                       {highlightText(h)}
                     </Text>
                   ))}
-                </Flex>
+                </Flex> */}
                 / {/* CTA */}
                 {/* <Group mt={rem(4)}>
                   <Button
